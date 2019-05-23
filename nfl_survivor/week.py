@@ -12,18 +12,30 @@ class Week:
             Games to be played in week
 
         """
-        self.week_number = week_number
-        self.games = games
+        self._week_number = week_number
+        self._games = tuple(games)
 
-    def __repr__(self):
-        """ Readable representation of week
+    @property
+    def week_number(self):
+        """ Week number
 
-        Parameters
-        ----------
-        str
+        Returns
+        -------
+        int
 
         """
-        return f'Week({self.week_number})'
+        return self._week_number
+
+    @property
+    def games(self):
+        """ Games taking place during week
+
+        Returns
+        -------
+        tuple(game.Game)
+
+        """
+        return self._games
 
     def __iter__(self):
         """ Iterate through games of week
@@ -38,9 +50,21 @@ class Week:
 
     @property
     def _team_to_game(self):
-        return {team: game
-                for game in self.games
-                for team in game.teams}
+        """ Map of team to game for the given week
+
+        Returns
+        -------
+        dict(str->game.Game)
+
+        """
+        try:
+            t_to_g = self.__team_to_game
+        except AttributeError:
+            t_to_g = self.__team_to_game = {team: game
+                                            for game in self.games
+                                            for team in game}
+
+        return t_to_g
 
     def team_game(self, team):
         """ Week's game for a team
@@ -59,7 +83,4 @@ class Week:
         try:
             return self._team_to_game[team]
         except KeyError:
-            raise ValueError(f'Team {team} is not playing in this week')
-
-
-    import pdb; pdb.set_trace()
+            raise ValueError(f'Team {team} is not playing week {self}')

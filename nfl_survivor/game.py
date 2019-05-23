@@ -14,6 +14,19 @@ class Game:
         """
         self._team_to_probability = dict((team_prob_one, team_prob_two))
 
+    def __iter__(self):
+        """ Iterate through team names
+
+        `yield from` produces regular generator instead of `dict_keys`
+
+        Yields
+        ------
+        str
+            Next team name
+
+        """
+        yield from self._team_to_probability.keys()
+
     def __repr__(self):
         """ Readable representation of game
 
@@ -44,15 +57,13 @@ class Game:
     def teams(self):
         """ Names of teams in game
 
-        `yield from` produces regular generator instead of `dict_keys`
-
         Yields
         ------
         str
             Next team in game
 
         """
-        yield from self._team_to_probability.keys()
+        yield from self
 
     def win_probability(self, team):
         """ Find probability a given team wins the game
@@ -71,4 +82,4 @@ class Game:
         try:
             return self._team_to_probability[team]
         except KeyError:
-            raise ValueError(f'Team {team} is not playing in this game')
+            raise ValueError(f'Team {team} is not playing in game {self}')
