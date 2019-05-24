@@ -1,3 +1,5 @@
+from nfl_survivor.utils import cached_property
+
 
 class Week:
 
@@ -48,7 +50,7 @@ class Week:
         """
         yield from self.games
 
-    @property
+    @cached_property
     def _team_to_game(self):
         """ Map of team to game for the given week
 
@@ -57,14 +59,9 @@ class Week:
         dict(str->game.Game)
 
         """
-        try:
-            t_to_g = self.__team_to_game
-        except AttributeError:
-            t_to_g = self.__team_to_game = {team: game
-                                            for game in self.games
-                                            for team in game}
-
-        return t_to_g
+        return {team: game
+                for game in self
+                for team in game}
 
     def team_game(self, team):
         """ Week's game for a team
