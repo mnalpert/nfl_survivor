@@ -52,3 +52,6 @@ class TestWeek:
 
         exception_msg = str(exception.value)
         assert 'g' in exception_msg and 'not playing' in exception_msg
+
+    def test_teams(self, week):
+        assert set(week.teams) == {'a', 'b', 'c', 'd', 'e', 'f'}

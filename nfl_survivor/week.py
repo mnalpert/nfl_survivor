@@ -81,3 +81,15 @@ class Week:
             return self._team_to_game[team]
         except KeyError:
             raise ValueError(f'Team {team} is not playing week {self}')
+
+    @property
+    def teams(self):
+        """ All teams playing in the week
+
+        Yields
+        ------
+        str
+            Next team playing
+
+        """
+        yield from self._team_to_game.keys()
