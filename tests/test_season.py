@@ -25,6 +25,9 @@ class TestSeason:
     def test_weeks(self, season, weeks):
         assert tuple(season.weeks) == weeks
 
+    def test_teams(self, season):
+        assert season.teams == {'a', 'b', 'c', 'd', 'e', 'f'}
+
     def test_nth_week(self, season, weeks):
         week_one, week_two, week_three = weeks
 
@@ -38,3 +41,33 @@ class TestSeason:
         exception_msg = str(exception.value)
 
         assert '4' in exception_msg and 'not included' in exception_msg
+
+    def test_team_to_weeks(self, season, weeks):
+        week_one, week_two, week_three = weeks
+
+        expected_team_to_weeks = {'a': [week_one, week_two, week_three],
+                                  'b': [week_one, week_two, week_three],
+                                  'c': [week_two, week_three],
+                                  'd': [week_two, week_three],
+                                  'e': [week_three],
+                                  'f': [week_three]}
+
+        assert all(sorted(weeks, key=lambda w: w.week_number) ==
+                   expected_team_to_weeks[team]
+                   for team, weeks in season._team_to_weeks.items())
+
+    def test_team_weeks(self, season, weeks):
+        week_one, week_two, week_three = weeks
+
+        expected_team_to_weeks = {'a': [week_one, week_two, week_three],
+                                  'b': [week_one, week_two, week_three],
+                                  'c': [week_two, week_three],
+                                  'd': [week_two, week_three],
+                                  'e': [week_three],
+                                  'f': [week_three]}
+
+        assert all(sorted(season.team_weeks(team), key=lambda w: w.week_number) ==
+                   expected_team_to_weeks[team] for team in ('a', 'b', 'c', 'd',
+                                                             'e', 'f'))
+
+        assert season.team_weeks('g') == []

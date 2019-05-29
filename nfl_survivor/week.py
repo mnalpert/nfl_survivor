@@ -66,6 +66,8 @@ class Week:
     def team_game(self, team):
         """ Week's game for a team
 
+        If a team is not playing in the week this returns None
+
         Parameters
         ----------
         team : str
@@ -77,10 +79,7 @@ class Week:
             Game that team is playing in during week
 
         """
-        try:
-            return self._team_to_game[team]
-        except KeyError:
-            raise ValueError(f'Team {team} is not playing week {self}')
+        return self._team_to_game.get(team)
 
     @property
     def teams(self):

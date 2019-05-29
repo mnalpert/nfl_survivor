@@ -1,9 +1,11 @@
+import math
+
 import pulp
 
 from nfl_survivor.utils import cached_property
 
 
-class LPPicker:
+class LpPicker:
 
     def __init__(self, season):
         """ Pick maker for a season
@@ -32,18 +34,19 @@ class LPPicker:
         return self._season
 
     @cached_property
-    def _week_team_to_linear_variable(self):
-        """
-
-        Parameters
-        ----------
+    def _team_week_to_lp_variable(self):
+        """ Map between team and week to LP variable corresponding
+        to picking that team in given week. LP variable value of 1
+        indicates that pick was made and 0 indicates pick was not made
 
         Returns
         -------
+        dict(tuple(str, int)->pulp.LpVariable)
+
         """
-        return {(week.week_number, team): pulp.LpVariable(name=f'{week.week_number}_{team}',
+        return {(team, week.week_number): pulp.LpVariable(name=f'{team}_{week.week_number}',
                                                           cat=pulp.constants.LpBinary)
-                for week in self
+                for week in self.season
                 for team in week.teams}
 
     def _add_constraints(self, lp):
@@ -66,24 +69,53 @@ class LPPicker:
     def _week_constraints(self):
         """ Constraint of picking exactly one team per week
 
-        Returns
-        -------
-        iterable(pulp.LpConstraint)
-            LP constraints indicating that exactly one team must be picked per week
+        Yields
+        ------
+        pulp.LpConstraint
+            LP constraint for next week
 
         """
-        pass
+        tw_to_lp_var = self._team_week_to_lp_variable
+
+        for week in self.season:
+            yield pulp.LpConstraint(e=((tw_to_lp_var[team, week.week_number], 1) for team in week.teams),
+                                    rhs=1,
+                                    sense=pulp.LpConstraintEQ,
+                                    name=f'week_{week.week_number}_constraint')
 
     def _team_constraints(self):
         """ Constraint of not picking a given team more than once per season
 
-        Returns
-        -------
-        iterable(pulp.LpConstraint)
-            LP constraints indicating that teams cannot be picked more than once a season
+        Yields
+        ------
+        pulp.LpConstraint
+            LP constraint for next team
 
         """
-        pass
+        tw_to_lp_var = self._team_week_to_lp_variable
+
+        for team in self.season.teams:
+            yield pulp.LpConstraint(e=((tw_to_lp_var[team, week.week_number], 1)
+                                       for week in self.season.team_weeks(team)),
+                                    rhs=1,
+                                    sense=pulp.LpConstraintLE,
+                                    name=f'team_{team}_constraint')
+
+    def _max_probability_objective(self):
+        """ LP objective for maximizing probability of winning all weeks in season
+
+        Returns
+        -------
+        pulp.LpAffineExpression
+
+        """
+        tw_to_lp_var = self._team_week_to_lp_variable
+
+        return pulp.LpAffineExpression(e=((tw_to_lp_var[team, week.week_number],
+                                           math.log(game.win_probability(team)))
+                                          for week in self.season
+                                          for game in week
+                                          for team in game))
 
     def _add_objective(self, lp):
         """ Add objective of maximizing win probability
@@ -93,7 +125,7 @@ class LPPicker:
         None
             Modifies the linear program in place
         """
-        pass
+        lp.objective = self._max_probability_objective()
 
     def _linear_program(self):
         """ Linear program given by season
@@ -103,7 +135,7 @@ class LPPicker:
         pulp.LpProblem
 
         """
-        lp = pulp.LpProblem(sense='Maximize')
+        lp = pulp.LpProblem(name='NFL Picker', sense='Maximize')
 
         self._add_constraints(lp)
 

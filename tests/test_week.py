@@ -37,7 +37,7 @@ class TestWeek:
                                       'e': game_three,
                                       'f': game_three}
 
-    def team_game(self, week, games):
+    def test_team_game(self, week, games):
         game_one, game_two, game_three = games
 
         assert week.team_game('a') == game_one
@@ -47,11 +47,7 @@ class TestWeek:
         assert week.team_game('e') == game_three
         assert week.team_game('f') == game_three
 
-        with pytest.raises(ValueError) as exception:
-            week.team_game('g')
-
-        exception_msg = str(exception.value)
-        assert 'g' in exception_msg and 'not playing' in exception_msg
+        assert week.team_game('g') is None
 
     def test_teams(self, week):
         assert set(week.teams) == {'a', 'b', 'c', 'd', 'e', 'f'}

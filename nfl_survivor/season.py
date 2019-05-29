@@ -1,3 +1,7 @@
+import collections
+
+from nfl_survivor.utils import cached_property
+
 
 class Season:
 
@@ -38,6 +42,17 @@ class Season:
         """
         yield from self
 
+    @property
+    def teams(self):
+        """ All teams playing in season
+
+        Returns
+        -------
+        set(str)
+
+        """
+        return set.union(*(set(week.teams) for week in self))
+
     def nth_week(self, week_number):
         """ Get nth week of season
 
@@ -55,3 +70,37 @@ class Season:
             return self._week_number_to_week[week_number]
         except KeyError:
             raise ValueError(f'Week {week_number} is not included in season {self}')
+
+    @cached_property
+    def _team_to_weeks(self):
+        """ Map from teams to weeks in which they are playing
+
+        Returns
+        -------
+        dict(str->list(week.Week))
+
+        """
+        team_to_weeks = collections.defaultdict(list)
+        for week in self:
+            for team in week.teams:
+                team_to_weeks[team].append(week)
+
+        return team_to_weeks
+
+    def team_weeks(self, team):
+        """ Weeks in which a team plays in
+
+        If a team is not playing in the season this will return empty list
+
+        Parameters
+        ----------
+        team : str
+            Team to get weeks playing for
+
+        Returns
+        -------
+        list(week.Week)
+            Weeks in which team is playing
+
+        """
+        return self._team_to_weeks[team]
