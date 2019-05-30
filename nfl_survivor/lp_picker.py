@@ -34,18 +34,18 @@ class LpPicker:
         return self._season
 
     @cached_property
-    def _team_week_to_lp_variable(self):
-        """ Map between team and week to LP variable corresponding
+    def _week_team_to_lp_variable(self):
+        """ Map between week and team to LP variable corresponding
         to picking that team in given week. LP variable value of 1
         indicates that pick was made and 0 indicates pick was not made
 
         Returns
         -------
-        dict(tuple(str, int)->pulp.LpVariable)
+        dict(tuple(int, str)->pulp.LpVariable)
 
         """
-        return {(team, week.week_number): pulp.LpVariable(name=f'{team}_{week.week_number}',
-                                                          cat=pulp.constants.LpBinary)
+        return {(week.week_number, team): pulp.LpVariable(name=f'{week.week_number}_{team}',
+                                                          cat=pulp.LpBinary)
                 for week in self.season
                 for team in week.teams}
 
@@ -75,10 +75,10 @@ class LpPicker:
             LP constraint for next week
 
         """
-        tw_to_lp_var = self._team_week_to_lp_variable
+        wt_to_lp_var = self._week_team_to_lp_variable
 
         for week in self.season:
-            yield pulp.LpConstraint(e=((tw_to_lp_var[team, week.week_number], 1) for team in week.teams),
+            yield pulp.LpConstraint(e=((wt_to_lp_var[week.week_number, team], 1) for team in week.teams),
                                     rhs=1,
                                     sense=pulp.LpConstraintEQ,
                                     name=f'week_{week.week_number}_constraint')
@@ -92,10 +92,10 @@ class LpPicker:
             LP constraint for next team
 
         """
-        tw_to_lp_var = self._team_week_to_lp_variable
+        wt_to_lp_var = self._week_team_to_lp_variable
 
         for team in self.season.teams:
-            yield pulp.LpConstraint(e=((tw_to_lp_var[team, week.week_number], 1)
+            yield pulp.LpConstraint(e=((wt_to_lp_var[week.week_number, team], 1)
                                        for week in self.season.team_weeks(team)),
                                     rhs=1,
                                     sense=pulp.LpConstraintLE,
@@ -109,9 +109,9 @@ class LpPicker:
         pulp.LpAffineExpression
 
         """
-        tw_to_lp_var = self._team_week_to_lp_variable
+        wt_to_lp_var = self._week_team_to_lp_variable
 
-        return pulp.LpAffineExpression(e=((tw_to_lp_var[team, week.week_number],
+        return pulp.LpAffineExpression(e=((wt_to_lp_var[week.week_number, team],
                                            math.log(game.win_probability(team)))
                                           for week in self.season
                                           for game in week
@@ -135,7 +135,7 @@ class LpPicker:
         pulp.LpProblem
 
         """
-        lp = pulp.LpProblem(name='NFL Picker', sense=pulp.LpMaximize)
+        lp = pulp.LpProblem(name='NFL Survivor', sense=pulp.LpMaximize)
 
         self._add_constraints(lp)
 
@@ -161,6 +161,6 @@ class LpPicker:
 
         status = linear_program.solve()
 
-        return status, ({week_number: team
-                         for (team, week_number), var in self._team_week_to_lp_variable.items()
-                         if var.varValue == 1} if status == pulp.LpStatusOptimal else {})
+        return status, (dict(week_team
+                             for week_team, var in self._week_team_to_lp_variable.items()
+                             if var.varValue == 1) if status == pulp.LpStatusOptimal else {})
