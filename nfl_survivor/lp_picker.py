@@ -135,7 +135,7 @@ class LpPicker:
         pulp.LpProblem
 
         """
-        lp = pulp.LpProblem(name='NFL Picker', sense='Maximize')
+        lp = pulp.LpProblem(name='NFL Picker', sense=pulp.LpMaximize)
 
         self._add_constraints(lp)
 
