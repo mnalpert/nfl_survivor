@@ -159,4 +159,8 @@ class LpPicker:
         """
         linear_program = self._linear_program()
 
-        status, solution = linear_program.solve()
+        status = linear_program.solve()
+
+        return status, ({week_number: team
+                         for (team, week_number), var in self._team_week_to_lp_variable.items()
+                         if var.varValue == 1} if status == pulp.LpStatusOptimal else {})
