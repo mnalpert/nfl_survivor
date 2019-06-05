@@ -83,3 +83,24 @@ class Game:
             return self._team_to_probability[team]
         except KeyError:
             raise ValueError(f'Team {team} is not playing in game {self}')
+
+    @classmethod
+    def from_dict(cls, game_dict):
+        """ Form game from dictionary representation
+
+        Parameters
+        ----------
+        game_dict : dict
+
+        Returns
+        -------
+        game.Game
+
+        """
+        try:
+            team_one, team_two = game_dict['game']
+        except ValueError:
+            raise ValueError('Cannot initialize game without exactly two teams')
+
+        return cls((team_one['team']['name'], team_one['team']['probability']),
+                   (team_two['team']['name'], team_two['team']['probability']))

@@ -1,5 +1,7 @@
 import pytest
 
+from nfl_survivor.season import Season
+
 
 @pytest.fixture
 @pytest.mark.usefixtures('week_one',
@@ -71,3 +73,19 @@ class TestSeason:
                                                              'e', 'f'))
 
         assert season.team_weeks('g') == []
+
+    def test_from_dict(self):
+        season = Season.from_dict([{'week': {'number': 1,
+                                             'games': [{'game': [{'team': {'name': 'a',
+                                                                  'probability': 0.1}},
+                                                       {'team': {'name': 'b',
+                                                                 'probability': 0.9}}]}]}}])
+
+        assert len(tuple(season.weeks)) == 1
+        assert season.teams == {'a', 'b'}
+
+    def test_from_yaml(self):
+        season = Season.from_yaml('./tests/test_data/test_season.yaml')
+
+        assert len(tuple(season.weeks)) == 3
+        assert season.teams == {'a', 'b', 'c', 'd', 'e', 'f'}

@@ -1,6 +1,9 @@
 import collections
 
+import yaml
+
 from nfl_survivor.utils import cached_property
+from nfl_survivor.week import Week
 
 
 class Season:
@@ -104,3 +107,35 @@ class Season:
 
         """
         return self._team_to_weeks[team]
+
+    @classmethod
+    def from_dict(cls, season_dict):
+        """ Form season from dictionary represenation
+
+        Parameters
+        ----------
+        season_dict : dict
+
+        Returns
+        -------
+        season.Season
+
+        """
+        return cls(Week.from_dict(week_dict['week']) for week_dict in season_dict)
+
+    @classmethod
+    def from_yaml(cls, yaml_file_path):
+        """ Form season from representation in YAML file
+
+        Parameters
+        ----------
+        yaml_file_path : str
+            Path to YAML file of season representation
+
+        Returns
+        -------
+        season.Season
+
+        """
+        with open(yaml_file_path, 'r') as yaml_file:
+            return cls.from_dict(yaml.load(yaml_file, Loader=yaml.Loader))

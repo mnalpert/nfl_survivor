@@ -1,3 +1,4 @@
+from nfl_survivor.game import Game
 from nfl_survivor.utils import cached_property
 
 
@@ -92,3 +93,19 @@ class Week:
 
         """
         yield from self._team_to_game.keys()
+
+    @classmethod
+    def from_dict(cls, week_dict):
+        """ Form week from dictionary representation
+
+        Parameters
+        ----------
+        week_dict : dict
+
+        Returns
+        -------
+        week.Week
+
+        """
+        return cls(week_dict['number'], (Game.from_dict(game_dict)
+                                         for game_dict in week_dict['games']))

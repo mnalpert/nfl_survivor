@@ -1,5 +1,7 @@
 import pytest
 
+from nfl_survivor.week import Week
+
 
 @pytest.fixture
 @pytest.mark.usefixtures('week_three')
@@ -51,3 +53,14 @@ class TestWeek:
 
     def test_teams(self, week):
         assert set(week.teams) == {'a', 'b', 'c', 'd', 'e', 'f'}
+
+    def test_from_dict(self):
+        week = Week.from_dict({'number': 1,
+                               'games': [{'game': [{'team': {'name': 'a',
+                                                    'probability': 0.1}},
+                                         {'team': {'name': 'b',
+                                                   'probability': 0.9}}]}]})
+
+        assert week.week_number == 1
+        assert set(week.teams) == {'a', 'b'}
+        assert len(tuple(week)) == 1
