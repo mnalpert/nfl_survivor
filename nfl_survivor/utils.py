@@ -1,3 +1,5 @@
+import yaml
+
 
 def _add_cache(method):
     """ Add cache to instance method
@@ -55,3 +57,16 @@ class cached_property(property):
             raise ValueError('Cannot used `cached_property` on property with setter')
 
         super().__init__(_add_cache(fget), fset, fdel, doc)
+
+
+def write_yaml(dict_, file_path):
+    """ Write dictionary to file in YAML format
+
+    Parameters
+    ----------
+    dict_ : dict
+    file_path : str
+
+    """
+    with open(file_path, 'w') as yaml_file:
+        yaml.dump(dict_, yaml_file)

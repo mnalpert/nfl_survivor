@@ -1,14 +1,14 @@
-import math
-
+import numpy as np
 import pulp
 
 from nfl_survivor.utils import cached_property
+from nfl_survivor.picker import Picker
 
 
-class LpPicker:
+class LpPicker(Picker):
 
     def __init__(self, season):
-        """ Pick maker for a season
+        """ Pick maker for a season using linear programming
 
         Parameters
         ----------
@@ -16,22 +16,11 @@ class LpPicker:
             Season to make picks for
 
         """
-        self._season = season
+        super().__init__(season)
 
         # constraints to be implemented
         self._constraint_handlers = (self._week_constraints,
                                      self._team_constraints)
-
-    @property
-    def season(self):
-        """ Getter for season
-
-        Returns
-        -------
-        season.Season
-
-        """
-        return self._season
 
     @cached_property
     def _week_team_to_lp_variable(self):
@@ -112,7 +101,7 @@ class LpPicker:
         wt_to_lp_var = self._week_team_to_lp_variable
 
         return pulp.LpAffineExpression(e=((wt_to_lp_var[week.week_number, team],
-                                           math.log(game.win_probability(team)))
+                                           np.log(game.win_probability(team)))
                                           for week in self.season
                                           for game in week
                                           for team in game))
@@ -144,7 +133,7 @@ class LpPicker:
         return lp
 
     def picks(self):
-        """ Make picks for a particular season
+        """ Make picks for a particular season using LP
 
         Parameters
         ----------
@@ -154,13 +143,13 @@ class LpPicker:
         Returns
         -------
         dict(int->str)
-            Week number to team name
+            Week number to team name. None if LP solve was unsuccessful
 
         """
         linear_program = self._linear_program()
 
         status = linear_program.solve()
 
-        return status, (dict(week_team
-                             for week_team, var in self._week_team_to_lp_variable.items()
-                             if var.varValue == 1) if status == pulp.LpStatusOptimal else {})
+        return (dict(week_team
+                     for week_team, var in self._week_team_to_lp_variable.items()
+                     if var.varValue == 1) if status == pulp.LpStatusOptimal else None)

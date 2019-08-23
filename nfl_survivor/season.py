@@ -1,4 +1,6 @@
 import collections
+import functools
+import operator
 
 import yaml
 
@@ -107,6 +109,22 @@ class Season:
 
         """
         return self._team_to_weeks[team]
+
+    def picks_win_probability(self, picks):
+        """ Compute probability of making it until the end of the season
+
+        Parameters
+        ----------
+        picks : dict(int->str)
+            Week number to team name
+
+        Returns
+        -------
+        float
+        """
+        return functools.reduce(operator.mul,
+                                (self.nth_week(week_number).team_win_probability(team)
+                                 for week_number, team in picks.items()))
 
     @classmethod
     def from_dict(cls, season_dict):

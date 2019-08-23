@@ -82,6 +82,24 @@ class Week:
         """
         return self._team_to_game.get(team)
 
+    def team_win_probability(self, team):
+        """ Probability that team wins this week
+
+        Parameters
+        ----------
+        team : str
+            Team to find win probability for
+
+        Returns
+        -------
+        float
+            Win probability
+        """
+        try:
+            return self.team_game(team).win_probability(team)
+        except AttributeError:
+            raise ValueError(f'Team {team} is not playing in week {self.week_number}')
+
     @property
     def teams(self):
         """ All teams playing in the week

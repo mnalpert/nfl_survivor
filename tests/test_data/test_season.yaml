@@ -1,57 +1,57 @@
 - week:
     number: 1
     games:
-        - game:
-            - team:
-                name: a
-                probability: 0.1
-            - team:
-                name: b
-                probability: 0.9
+    - game:
+      - team:
+          name: a
+          probability: 0.1
+      - team:
+          name: b
+          probability: 0.9
 
 
 - week:
     number: 2
     games:
-        - game:
-            - team:
-                name: a
-                probability: 0.1
-            - team:
-                name: b
-                probability: 0.9
+    - game:
+      - team:
+          name: a
+          probability: 0.1
+      - team:
+          name: b
+          probability: 0.9
 
-        - game:
-            - team:
-                name: c
-                probability: 0.2
-            - team:
-                name: d
-                probability: 0.8
+    - game:
+      - team:
+          name: c
+          probability: 0.2
+      - team:
+          name: d
+          probability: 0.8
 
 - week:
     number: 3
     games:
-        - game:
-            - team:
-                name: a
-                probability: 0.1
-            - team:
-                name: b
-                probability: 0.9
+    - game:
+      - team:
+          name: a
+          probability: 0.1
+      - team:
+          name: b
+          probability: 0.9
 
-        - game:
-            - team:
-                name: c
-                probability: 0.2
-            - team:
-                name: d
-                probability: 0.8
+    - game:
+      - team:
+          name: c
+          probability: 0.2
+      - team:
+          name: d
+          probability: 0.8
 
-        - game:
-            - team:
-                name: e
-                probability: 0.3
-            - team:
-                name: f
-                probability: 0.7
+    - game:
+      - team:
+          name: e
+          probability: 0.3
+      - team:
+          name: f
+          probability: 0.7

@@ -76,16 +76,14 @@ class TestTestLpPicker:
         for var in lp_picker._week_team_to_lp_variable.values():
             var.varValue = 1
 
-        status, picks = lp_picker.picks()
+        picks = lp_picker.picks()
 
-        assert status == pulp.LpStatusOptimal
         assert all(week.week_number in picks for week in season.weeks)
 
     @mock.patch('pulp.LpProblem.solve')
     def test_picks_nonoptimal(self, pulp_solve, lp_picker):
         pulp_solve.return_value = pulp.LpStatusInfeasible
 
-        status, picks = lp_picker.picks()
+        picks = lp_picker.picks()
 
-        assert status == pulp.LpStatusInfeasible
-        assert picks == {}
+        assert picks is None
