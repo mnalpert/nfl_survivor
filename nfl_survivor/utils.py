@@ -1,3 +1,5 @@
+import logging
+
 import yaml
 
 
@@ -70,3 +72,8 @@ def write_yaml(dict_, file_path):
     """
     with open(file_path, 'w') as yaml_file:
         yaml.dump(dict_, yaml_file)
+
+
+def initialize_logging(log_level=logging.INFO):
+    logging.basicConfig(format='%(asctime)s %(filename)s:%(lineno)d: [%(levelname)s] %(message)s',
+                        level=log_level)

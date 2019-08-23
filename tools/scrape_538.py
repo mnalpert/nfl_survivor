@@ -1,11 +1,10 @@
-import click
 import re
 
+import click
 import requests
 from bs4 import BeautifulSoup
 
-from nfl_survivor.utils import write_yaml
-
+from nfl_survivor import utils
 
 SEASON_URL = 'https://projects.fivethirtyeight.com/{year}-nfl-predictions/games/'
 
@@ -143,13 +142,14 @@ class Scraper:
         file_path : str
             Path to write YAML output to
         """
-        write_yaml(self.scraped_season_dict(), file_path)
+        utils.write_yaml(self.scraped_season_dict(), file_path)
 
 
 @click.command()
 @click.option('-o', '--output', 'output', type=str)
 @click.option('-y', '--year', 'year', type=int)
 def scrape(year, output):
+    utils.initialize_logging()
     scraper = Scraper(SEASON_URL.format(year=year))
 
     if output:
