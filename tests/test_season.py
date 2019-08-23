@@ -74,12 +74,19 @@ class TestSeason:
 
         assert season.team_weeks('g') == []
 
+    def test_picks_win_probability(self, season):
+        picks = {1: 'b',
+                 2: 'd',
+                 3: 'f'}
+
+        assert season.picks_win_probability(picks) == 0.9 * 0.8 * 0.7
+
     def test_from_dict(self):
         season = Season.from_dict([{'week': {'number': 1,
                                              'games': [{'game': [{'team': {'name': 'a',
-                                                                  'probability': 0.1}},
-                                                       {'team': {'name': 'b',
-                                                                 'probability': 0.9}}]}]}}])
+                                                                           'probability': 0.1}},
+                                                                 {'team': {'name': 'b',
+                                                                           'probability': 0.9}}]}]}}])
 
         assert len(tuple(season.weeks)) == 1
         assert season.teams == {'a', 'b'}

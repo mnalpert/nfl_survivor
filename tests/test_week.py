@@ -51,15 +51,29 @@ class TestWeek:
 
         assert week.team_game('g') is None
 
+    def test_team_win_probability(self, week):
+        assert week.team_win_probability('a') == 0.1
+        assert week.team_win_probability('b') == 0.9
+        assert week.team_win_probability('c') == 0.2
+        assert week.team_win_probability('d') == 0.8
+        assert week.team_win_probability('e') == 0.3
+        assert week.team_win_probability('f') == 0.7
+
+        with pytest.raises(ValueError) as exception:
+            week.team_win_probability('g')
+
+        exception_msg = str(exception.value)
+        assert 'g' in exception_msg and 'not playing' in exception_msg
+
     def test_teams(self, week):
         assert set(week.teams) == {'a', 'b', 'c', 'd', 'e', 'f'}
 
     def test_from_dict(self):
         week = Week.from_dict({'number': 1,
                                'games': [{'game': [{'team': {'name': 'a',
-                                                    'probability': 0.1}},
-                                         {'team': {'name': 'b',
-                                                   'probability': 0.9}}]}]})
+                                                             'probability': 0.1}},
+                                                   {'team': {'name': 'b',
+                                                             'probability': 0.9}}]}]})
 
         assert week.week_number == 1
         assert set(week.teams) == {'a', 'b'}
