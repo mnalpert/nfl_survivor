@@ -58,9 +58,13 @@ class Scraper:
         dict
 
         """
-        return {'game': [Scraper._team_dict(team_tag)
-                         for team_tag in
-                         game_tag.find('table', class_='game-body').find_all('tr', class_='tr')]}
+        game = [Scraper._team_dict(team_tag)
+                for team_tag in
+                game_tag.find('table', class_='game-body').find_all('tr', class_='tr')]
+
+        logging.info('Scraped game between %s and %s', *(team['team']['name'] for team in game))
+
+        return {'game': game}
 
     @staticmethod
     def _week_dict(week_tag):
@@ -135,11 +139,17 @@ class Scraper:
         try:
             return self._season_dict(self._site_soup())
         except ConnectionError:
-            raise ConnectionError(f'Could not connect to {self.url}')
+            exception_msg = f'Could not connect to {self.url}'
+            logging.exception(exception_msg)
+            raise ConnectionError(exception_msg)
         except requests.exceptions.RequestException:
-            raise ValueError(f'Error requesting content from {self.url}')
+            exception_msg = f'Error requesting content from {self.url}'
+            logging.exception(exception_msg)
+            raise ValueError(exception_msg)
         except Exception:
-            raise ValueError(f'Error in conneting to, requesting content, and scraping from {self.url}')
+            exception_msg = f'Error in connecting to, requesting content, and scraping from {self.url}'
+            logging.exception(exception_msg)
+            raise ValueError(exception_msg)
 
     def write_season_yaml(self, file_path):
         """ Write season to YAML file
