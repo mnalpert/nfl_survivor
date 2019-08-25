@@ -1,3 +1,4 @@
+import logging
 import re
 
 import click
@@ -21,6 +22,7 @@ class Scraper:
 
         """
         self._url = url
+        logging.info('Created scraper for %s', self.url)
 
     @property
     def url(self):
@@ -73,7 +75,10 @@ class Scraper:
         dict
 
         """
-        return {'number': int(week_tag.h3.text.strip().split()[1]),
+        week_number = int(week_tag.h3.text.strip().split()[1])
+        logging.info('Scraping games for week %s', week_number)
+
+        return {'number': week_number,
                 'games': [Scraper._game_dict(game_tag)
                           for game_tag in week_tag.find_all('div', class_='game')]}
 
@@ -101,6 +106,7 @@ class Scraper:
         str
 
         """
+        logging.info('Fetching content from %s', self.url)
         return requests.get(self.url).text
 
     def _site_soup(self):
@@ -111,6 +117,7 @@ class Scraper:
         bs4.BeautifulSoup
 
         """
+        logging.info('Parsing HTML from %s', self.url)
         return BeautifulSoup(self._site_html(), 'html.parser')
 
     def scraped_season_dict(self):
@@ -154,6 +161,7 @@ def scrape(year, output):
 
     if output:
         scraper.write_season_yaml(output)
+        logging.info('Wrote season YAML to %s', output)
     else:
         print(scraper.scraped_season_dict())
 
