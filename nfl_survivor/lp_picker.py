@@ -3,6 +3,7 @@ import pulp
 
 from nfl_survivor.utils import cached_property
 from nfl_survivor.picker import Picker
+from nfl_survivor.picks import Picks
 
 
 class LpPicker(Picker):
@@ -150,6 +151,6 @@ class LpPicker(Picker):
 
         status = linear_program.solve()
 
-        return (dict(week_team
-                     for week_team, var in self._week_team_to_lp_variable.items()
-                     if var.varValue == 1) if status == pulp.LpStatusOptimal else None)
+        return (Picks(week_team
+                      for week_team, var in self._week_team_to_lp_variable.items()
+                      if var.varValue == 1) if status == pulp.LpStatusOptimal else None)
