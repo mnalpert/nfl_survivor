@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
 
-class Picker:
+class Picker(metaclass=ABCMeta):
 
     def __init__(self, season):
         """ Pick maker for a season
