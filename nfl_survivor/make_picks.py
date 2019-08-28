@@ -5,7 +5,6 @@ from nfl_survivor.lp_picker import LpPicker
 from nfl_survivor.season import Season
 from nfl_survivor.utils import initialize_logging
 
-
 PICKERS = (GreedyPicker, LpPicker)
 
 

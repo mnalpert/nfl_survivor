@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup
 
 from nfl_survivor import utils
 
+logger = logging.getLogger(__name__)
+
 SEASON_URL = 'https://projects.fivethirtyeight.com/{year}-nfl-predictions/games/'
 
 
@@ -22,7 +24,7 @@ class Scraper:
 
         """
         self._url = url
-        logging.info('Created scraper for %s', self.url)
+        logger.info('Created scraper for %s', self.url)
 
     @property
     def url(self):
@@ -62,7 +64,7 @@ class Scraper:
                 for team_tag in
                 game_tag.find('table', class_='game-body').find_all('tr', class_='tr')]
 
-        logging.info('Scraped game between %s and %s', *(team['team']['name'] for team in game))
+        logger.info('Scraped game between %s and %s', *(team['team']['name'] for team in game))
 
         return {'game': game}
 
@@ -80,7 +82,7 @@ class Scraper:
 
         """
         week_number = int(week_tag.h3.text.strip().split()[1])
-        logging.info('Scraping games for week %s', week_number)
+        logger.info('Scraping games for week %s', week_number)
 
         return {'number': week_number,
                 'games': [Scraper._game_dict(game_tag)
@@ -110,7 +112,7 @@ class Scraper:
         str
 
         """
-        logging.info('Fetching content from %s', self.url)
+        logger.info('Fetching content from %s', self.url)
         return requests.get(self.url).text
 
     def _site_soup(self):
@@ -121,7 +123,7 @@ class Scraper:
         bs4.BeautifulSoup
 
         """
-        logging.info('Parsing HTML from %s', self.url)
+        logger.info('Parsing HTML from %s', self.url)
         return BeautifulSoup(self._site_html(), 'html.parser')
 
     def scraped_season_dict(self):
@@ -140,15 +142,15 @@ class Scraper:
             return self._season_dict(self._site_soup())
         except ConnectionError:
             exception_msg = f'Could not connect to {self.url}'
-            logging.exception(exception_msg)
+            logger.exception(exception_msg)
             raise ConnectionError(exception_msg)
         except requests.exceptions.RequestException:
             exception_msg = f'Error requesting content from {self.url}'
-            logging.exception(exception_msg)
+            logger.exception(exception_msg)
             raise ValueError(exception_msg)
         except Exception:
             exception_msg = f'Error in connecting to, requesting content, and scraping from {self.url}'
-            logging.exception(exception_msg)
+            logger.exception(exception_msg)
             raise ValueError(exception_msg)
 
     def write_season_yaml(self, file_path):
