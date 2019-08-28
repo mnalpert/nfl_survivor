@@ -1,11 +1,14 @@
 import collections
 import functools
+import logging
 import operator
 
 import yaml
 
 from nfl_survivor.utils import cached_property
 from nfl_survivor.week import Week
+
+logger = logging.getLogger(__name__)
 
 
 class Season:
@@ -21,6 +24,7 @@ class Season:
         """
         self._week_number_to_week = {week.week_number: week
                                      for week in weeks}
+        logger.info('Loaded season')
 
     def __iter__(self):
         """ Iterate through weeks
@@ -74,7 +78,9 @@ class Season:
         try:
             return self._week_number_to_week[week_number]
         except KeyError:
-            raise ValueError(f'Week {week_number} is not included in season {self}')
+            exception_msg = f'Week {week_number} is not included in season {self}'
+            logger.exception(exception_msg)
+            raise ValueError(exception_msg)
 
     @cached_property
     def _team_to_weeks(self):
@@ -155,5 +161,6 @@ class Season:
         season.Season
 
         """
+        logger.info('Loading season from %s', yaml_file_path)
         with open(yaml_file_path, 'r') as yaml_file:
             return cls.from_dict(yaml.load(yaml_file, Loader=yaml.Loader))

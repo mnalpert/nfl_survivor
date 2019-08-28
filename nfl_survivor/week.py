@@ -1,5 +1,9 @@
+import logging
+
 from nfl_survivor.game import Game
 from nfl_survivor.utils import cached_property
+
+logger = logging.getLogger(__name__)
 
 
 class Week:
@@ -15,6 +19,7 @@ class Week:
             Games to be played in week
 
         """
+        logger.info('Loading week number %d', week_number)
         self._week_number = week_number
         self._games = tuple(games)
 
@@ -98,7 +103,9 @@ class Week:
         try:
             return self.team_game(team).win_probability(team)
         except AttributeError:
-            raise ValueError(f'Team {team} is not playing in week {self.week_number}')
+            exception_msg = f'Team {team} is not playing in week {self.week_number}'
+            logger.exception(exception_msg)
+            raise ValueError(exception_msg)
 
     @property
     def teams(self):

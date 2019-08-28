@@ -1,6 +1,10 @@
+import logging
+
 import yaml
 
 from nfl_survivor.utils import write_yaml
+
+logger = logging.getLogger(__name__)
 
 
 class Picks(dict):
@@ -57,4 +61,5 @@ class Picks(dict):
             Path to write picks to
 
         """
+        logger.info('Writing picks to file %s', file_path)
         write_yaml(self.yaml_dict(), file_path)

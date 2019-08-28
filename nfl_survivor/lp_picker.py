@@ -1,9 +1,13 @@
+import logging
+
 import numpy as np
 import pulp
 
 from nfl_survivor.utils import cached_property
 from nfl_survivor.picker import Picker
 from nfl_survivor.picks import Picks
+
+logger = logging.getLogger(__name__)
 
 
 class LpPicker(Picker):
@@ -65,6 +69,7 @@ class LpPicker(Picker):
             LP constraint for next week
 
         """
+        logger.info('Adding one team per week constraints')
         wt_to_lp_var = self._week_team_to_lp_variable
 
         for week in self.season:
@@ -82,6 +87,7 @@ class LpPicker(Picker):
             LP constraint for next team
 
         """
+        logger.info('Adding do not pick same team twice constraints')
         wt_to_lp_var = self._week_team_to_lp_variable
 
         for team in self.season.teams:
@@ -99,6 +105,7 @@ class LpPicker(Picker):
         pulp.LpAffineExpression
 
         """
+        logger.info('Adding objective to maximize win probability')
         wt_to_lp_var = self._week_team_to_lp_variable
 
         return pulp.LpAffineExpression(e=((wt_to_lp_var[week.week_number, team],
@@ -147,10 +154,15 @@ class LpPicker(Picker):
             Week number to team name. None if LP solve was unsuccessful
 
         """
+        logger.info('Creating linear program to determine picks')
         linear_program = self._linear_program()
 
+        logger.info('Solving linear program')
         status = linear_program.solve()
 
+        logger.info('Linear program status %s', pulp.LpStatus[status])
+
+        logger.info('Forming picks')
         return (Picks(week_team
                       for week_team, var in self._week_team_to_lp_variable.items()
                       if var.varValue == 1) if status == pulp.LpStatusOptimal else None)

@@ -1,3 +1,7 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class Game:
 
@@ -82,7 +86,9 @@ class Game:
         try:
             return self._team_to_probability[team]
         except KeyError:
-            raise ValueError(f'Team {team} is not playing in game {self}')
+            exception_msg = f'Team {team} is not playing in game {self}'
+            logger.exception(exception_msg)
+            raise ValueError(exception_msg)
 
     @classmethod
     def from_dict(cls, game_dict):
@@ -100,7 +106,9 @@ class Game:
         try:
             team_one, team_two = game_dict['game']
         except ValueError:
-            raise ValueError('Cannot initialize game without exactly two teams')
+            exception_msg = 'Cannot initialize game without exactly two teams'
+            logger.exception(exception_msg)
+            raise ValueError(exception_msg)
 
         return cls((team_one['team']['name'], team_one['team']['probability']),
                    (team_two['team']['name'], team_two['team']['probability']))
