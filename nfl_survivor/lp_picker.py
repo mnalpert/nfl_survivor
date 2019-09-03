@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 class LpPicker(Picker):
 
-    def __init__(self, season):
+    def __init__(self, season, previous_picks=None):
         """ Pick maker for a season using linear programming
 
         Parameters
@@ -21,11 +21,12 @@ class LpPicker(Picker):
             Season to make picks for
 
         """
-        super().__init__(season)
+        super().__init__(season, previous_picks)
 
         # constraints to be implemented
         self._constraint_handlers = (self._week_constraints,
-                                     self._team_constraints)
+                                     self._team_constraints,
+                                     self._previous_pick_constraints)
 
     @cached_property
     def _week_team_to_lp_variable(self):
@@ -73,6 +74,7 @@ class LpPicker(Picker):
         wt_to_lp_var = self._week_team_to_lp_variable
 
         for week in self.season:
+            logger.info('Adding constraint to pick exactly one team for week %d', week.week_number)
             yield pulp.LpConstraint(e=((wt_to_lp_var[week.week_number, team], 1) for team in week.teams),
                                     rhs=1,
                                     sense=pulp.LpConstraintEQ,
@@ -91,11 +93,31 @@ class LpPicker(Picker):
         wt_to_lp_var = self._week_team_to_lp_variable
 
         for team in self.season.teams:
+            logger.info('Adding constraint to pick team %s at most once', team)
             yield pulp.LpConstraint(e=((wt_to_lp_var[week.week_number, team], 1)
                                        for week in self.season.team_weeks(team)),
                                     rhs=1,
                                     sense=pulp.LpConstraintLE,
                                     name=f'team_{team}_constraint')
+
+    def _previous_pick_constraints(self):
+        """ Constraint ensuring that previous picks are respected
+
+        Yields
+        ------
+        pulp.LpConstraint
+            LpConstraint for a previous pick
+        """
+        logger.info('Adding previous picks constraints')
+        wt_to_lp_var = self._week_team_to_lp_variable
+
+        for week_number, team in self.previous_picks.items():
+            logger.info('Add constraint to respect previous picks for week %d, team %s',
+                        week_number, team)
+            yield pulp.LpConstraint(e=((wt_to_lp_var[week_number, team], 1),),
+                                    rhs=1,
+                                    sense=pulp.LpConstraintEQ,
+                                    name=f'previous_pick_{week_number}_{team}')
 
     def _max_probability_objective(self):
         """ LP objective for maximizing probability of winning all weeks in season

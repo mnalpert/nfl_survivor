@@ -49,8 +49,16 @@ class Picks(dict):
         Picks
 
         """
+        logger.info('Loading picks from %s', yaml_file_path)
         with open(yaml_file_path, 'r') as yaml_file:
-            return cls.from_list(yaml.load(yaml_file, Loader=yaml.Loader))
+            picks = cls.from_list(yaml.load(yaml_file, Loader=yaml.Loader))
+
+        if not len(set(picks.values())) == len(picks):
+            exception_msg = f'Invalid picks, there are teams appearing more than once in {yaml_file_path}'
+            logger.exception(exception_msg)
+            raise ValueError(exception_msg)
+
+        return picks
 
     def to_yaml(self, file_path):
         """ Write down picks to file
