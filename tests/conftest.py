@@ -1,6 +1,7 @@
 import pytest
 
 from nfl_survivor.game import Game
+from nfl_survivor.picks import Picks
 from nfl_survivor.season import Season
 from nfl_survivor.week import Week
 
@@ -47,3 +48,8 @@ def week_three(game_one, game_two, game_three):
                          'week_three')
 def season(week_one, week_two, week_three):
     return Season((week_one, week_two, week_three))
+
+
+@pytest.fixture
+def picks():
+    return Picks(((1, 'a'), (2, 'b')))

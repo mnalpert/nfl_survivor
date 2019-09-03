@@ -7,9 +7,9 @@ from nfl_survivor.lp_picker import LpPicker
 
 
 @pytest.fixture
-@pytest.mark.usefixtures('season')
-def lp_picker(season):
-    return LpPicker(season)
+@pytest.mark.usefixtures('season', 'picks')
+def lp_picker(season, picks):
+    return LpPicker(season, picks)
 
 
 @pytest.fixture
@@ -49,6 +49,13 @@ class TestTestLpPicker:
 
         assert len(tuple(lp_picker._team_constraints())) == len(season.teams)
 
+    def test_previous_pick_constraints(self, lp_picker, season):
+        for ppc in lp_picker._previous_pick_constraints():
+            assert isinstance(ppc, pulp.LpConstraint)
+
+            assert ppc.sense == pulp.LpConstraintEQ
+            assert abs(ppc.constant) == 1
+
     def test_max_probability_objective(self, lp_picker):
         obj = lp_picker._max_probability_objective()
 
@@ -60,7 +67,8 @@ class TestTestLpPicker:
         lp_picker._add_constraints(linear_program)
 
         assert len(linear_program.constraints) == (len(tuple(season.weeks)) +
-                                                   len(season.teams))
+                                                   len(season.teams) +
+                                                   len(lp_picker.previous_picks))
 
     def test_linear_program(self, lp_picker):
         lp = lp_picker._linear_program()

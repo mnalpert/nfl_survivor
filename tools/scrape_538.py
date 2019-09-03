@@ -1,4 +1,5 @@
 import logging
+import pprint
 import re
 
 import click
@@ -167,15 +168,15 @@ class Scraper:
 @click.command()
 @click.option('-o', '--output', 'output', type=str)
 @click.option('-y', '--year', 'year', type=int)
+@utils.initialize_logging()
 def scrape(year, output):
-    utils.initialize_logging()
     scraper = Scraper(SEASON_URL.format(year=year))
 
     if output:
         scraper.write_season_yaml(output)
-        logging.info('Wrote season YAML to %s', output)
+        logger.info('Wrote season YAML to %s', output)
     else:
-        print(scraper.scraped_season_dict())
+        pprint.pprint(scraper.scraped_season_dict())
 
 
 if __name__ == '__main__':

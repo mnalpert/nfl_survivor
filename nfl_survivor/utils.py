@@ -75,5 +75,8 @@ def write_yaml(dict_, file_path):
 
 
 def initialize_logging(log_level=logging.INFO):
-    logging.basicConfig(format='%(asctime)s %(filename)s:%(lineno)d: [%(levelname)s] %(message)s',
-                        level=log_level)
+    def _add_logging(func):
+        logging.basicConfig(format='%(asctime)s %(filename)s:%(lineno)d: [%(levelname)s] %(message)s',
+                            level=log_level)
+        return func
+    return _add_logging
