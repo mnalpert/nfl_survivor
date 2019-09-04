@@ -36,6 +36,12 @@ def infeasible_greedy_picker(infeasible_season):
     return GreedyPicker(infeasible_season)
 
 
+@pytest.fixture
+@pytest.mark.usefixtures('season', 'picks')
+def greedy_picker_with_previous(season, picks):
+    return GreedyPicker(season, picks)
+
+
 @pytest.mark.usefixtures('greedy_picker', 'infeasible_greedy_picker')
 class TestGreedyPicker:
 
@@ -51,3 +57,9 @@ class TestGreedyPicker:
         exception_msg = str(exception.value)
 
         assert 'Cannot solve' in exception_msg and 'week 3' in exception_msg
+
+    def test_picks_with_previous(self, greedy_picker_with_previous):
+        # first two weeks must be a and c respectively
+        assert greedy_picker_with_previous.picks() == {1: 'a',
+                                                       2: 'c',
+                                                       3: 'b'}

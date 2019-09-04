@@ -52,4 +52,4 @@ def season(week_one, week_two, week_three):
 
 @pytest.fixture
 def picks():
-    return Picks(((1, 'a'), (2, 'b')))
+    return Picks(((1, 'a'), (2, 'c')))
