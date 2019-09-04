@@ -177,7 +177,3 @@ def scrape(year, output):
         logger.info('Wrote season YAML to %s', output)
     else:
         pprint.pprint(scraper.scraped_season_dict())
-
-
-if __name__ == '__main__':
-    scrape()

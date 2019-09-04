@@ -37,7 +37,3 @@ def make_picks(season_path, output, picker_name, previous_picks):
         picks.to_yaml(output)
     else:
         pprint.pprint(picks.yaml_dict())
-
-
-if __name__ == '__main__':
-    make_picks()
