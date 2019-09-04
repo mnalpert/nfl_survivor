@@ -1,0 +1,34 @@
+- week:
+    number: 1
+    games:
+    - game:
+      - team:
+          name: A
+          probability: 0.75
+      - team:
+          name: B
+          probability: 0.25
+    - game:
+      - team:
+          name: C
+          probability: 0.5
+      - team:
+          name: D
+          probability: 0.5
+- week:
+    number: 2
+    games:
+    - game:
+      - team:
+          name: A
+          probability: 0.99
+      - team:
+          name: C
+          probability: 0.01
+    - game:
+      - team:
+          name: B
+          probability: 0.5
+      - team:
+          name: D
+          probability: 0.5
