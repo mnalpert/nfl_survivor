@@ -15,12 +15,17 @@ PICKERS = (GreedyPicker, LpPicker)
 
 
 @click.command()
-@click.option('-pp', '--previous_picks', 'previous_picks', type=str, default=None)
-@click.option('-p', '--picker', 'picker_name', type=str, default='LpPicker')
-@click.option('-o', '--output', 'output', type=str, default=None)
-@click.option('-s', '--season', 'season_path', type=str)
+@click.option('-pp', '--previous_picks', 'previous_picks', type=str, default=None,
+              help='File path to YAML file with previous picks')
+@click.option('-p', '--picker', 'picker_name', type=str, default='LpPicker',
+              help='Name of picker to use when making picks')
+@click.option('-o', '--output', 'output', type=str, default=None,
+              help='YAML file path to write picks to')
+@click.option('-s', '--season', 'season_path', type=str,
+              help='File path to season YAML')
 @initialize_logging()
 def make_picks(season_path, output, picker_name, previous_picks):
+    """Make picks for a given season and set of previous picks"""
     season = Season.from_yaml(season_path)
     previous_picks = Picks.from_yaml(previous_picks) if previous_picks else None
     try:

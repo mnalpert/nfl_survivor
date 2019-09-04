@@ -166,10 +166,13 @@ class Scraper:
 
 
 @click.command()
-@click.option('-o', '--output', 'output', type=str)
-@click.option('-y', '--year', 'year', type=int)
+@click.option('-o', '--output', 'output', type=str,
+              help='YAML file path to write season to')
+@click.option('-y', '--year', 'year', type=int,
+              help='Year of season to scrape')
 @utils.initialize_logging()
 def scrape(year, output):
+    """Scrape NFL season for a given year with probabilitys from fivethirtyeight.com"""
     scraper = Scraper(SEASON_URL.format(year=year))
 
     if output:
