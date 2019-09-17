@@ -1,0 +1,1843 @@
+- week:
+    games:
+    - game:
+      - team:
+          name: Green Bay
+          probability: 0.36
+      - team:
+          name: Chicago
+          probability: 0.64
+    - game:
+      - team:
+          name: Atlanta
+          probability: 0.41
+      - team:
+          name: Minnesota
+          probability: 0.59
+    - game:
+      - team:
+          name: Baltimore
+          probability: 0.61
+      - team:
+          name: Miami
+          probability: 0.39
+    - game:
+      - team:
+          name: Buffalo
+          probability: 0.45
+      - team:
+          name: N.Y. Jets
+          probability: 0.55
+    - game:
+      - team:
+          name: Kansas City
+          probability: 0.58
+      - team:
+          name: Jacksonville
+          probability: 0.42
+    - game:
+      - team:
+          name: L.A. Rams
+          probability: 0.52
+      - team:
+          name: Carolina
+          probability: 0.48
+    - game:
+      - team:
+          name: Tennessee
+          probability: 0.4
+      - team:
+          name: Cleveland
+          probability: 0.6
+    - game:
+      - team:
+          name: Washington
+          probability: 0.23
+      - team:
+          name: Philadelphia
+          probability: 0.77
+    - game:
+      - team:
+          name: Cincinnati
+          probability: 0.25
+      - team:
+          name: Seattle
+          probability: 0.75
+    - game:
+      - team:
+          name: Indianapolis
+          probability: 0.28
+      - team:
+          name: L.A. Chargers
+          probability: 0.72
+    - game:
+      - team:
+          name: Detroit
+          probability: 0.51
+      - team:
+          name: Arizona
+          probability: 0.49
+    - game:
+      - team:
+          name: N.Y. Giants
+          probability: 0.26
+      - team:
+          name: Dallas
+          probability: 0.74
+    - game:
+      - team:
+          name: San Francisco
+          probability: 0.45
+      - team:
+          name: Tampa Bay
+          probability: 0.55
+    - game:
+      - team:
+          name: Pittsburgh
+          probability: 0.32
+      - team:
+          name: New England
+          probability: 0.68
+    - game:
+      - team:
+          name: Houston
+          probability: 0.32
+      - team:
+          name: New Orleans
+          probability: 0.68
+    - game:
+      - team:
+          name: Denver
+          probability: 0.49
+      - team:
+          name: Oakland
+          probability: 0.51
+    number: 1
+- week:
+    games:
+    - game:
+      - team:
+          name: Tampa Bay
+          probability: 0.3
+      - team:
+          name: Carolina
+          probability: 0.7
+    - game:
+      - team:
+          name: Arizona
+          probability: 0.19
+      - team:
+          name: Baltimore
+          probability: 0.81
+    - game:
+      - team:
+          name: Buffalo
+          probability: 0.52
+      - team:
+          name: N.Y. Giants
+          probability: 0.48
+    - game:
+      - team:
+          name: Dallas
+          probability: 0.62
+      - team:
+          name: Washington
+          probability: 0.38
+    - game:
+      - team:
+          name: Indianapolis
+          probability: 0.32
+      - team:
+          name: Tennessee
+          probability: 0.68
+    - game:
+      - team:
+          name: Jacksonville
+          probability: 0.2
+      - team:
+          name: Houston
+          probability: 0.8
+    - game:
+      - team:
+          name: L.A. Chargers
+          probability: 0.59
+      - team:
+          name: Detroit
+          probability: 0.41
+    - game:
+      - team:
+          name: Minnesota
+          probability: 0.44
+      - team:
+          name: Green Bay
+          probability: 0.56
+    - game:
+      - team:
+          name: New England
+          probability: 0.81
+      - team:
+          name: Miami
+          probability: 0.19
+    - game:
+      - team:
+          name: Seattle
+          probability: 0.42
+      - team:
+          name: Pittsburgh
+          probability: 0.58
+    - game:
+      - team:
+          name: San Francisco
+          probability: 0.53
+      - team:
+          name: Cincinnati
+          probability: 0.47
+    - game:
+      - team:
+          name: Kansas City
+          probability: 0.69
+      - team:
+          name: Oakland
+          probability: 0.31
+    - game:
+      - team:
+          name: Chicago
+          probability: 0.54
+      - team:
+          name: Denver
+          probability: 0.46
+    - game:
+      - team:
+          name: New Orleans
+          probability: 0.44
+      - team:
+          name: L.A. Rams
+          probability: 0.56
+    - game:
+      - team:
+          name: Philadelphia
+          probability: 0.55
+      - team:
+          name: Atlanta
+          probability: 0.45
+    - game:
+      - team:
+          name: Cleveland
+          probability: 0.5
+      - team:
+          name: N.Y. Jets
+          probability: 0.5
+    number: 2
+- week:
+    games:
+    - game:
+      - team:
+          name: Tennessee
+          probability: 0.7
+      - team:
+          name: Jacksonville
+          probability: 0.3
+    - game:
+      - team:
+          name: Atlanta
+          probability: 0.47
+      - team:
+          name: Indianapolis
+          probability: 0.53
+    - game:
+      - team:
+          name: Baltimore
+          probability: 0.32
+      - team:
+          name: Kansas City
+          probability: 0.68
+    - game:
+      - team:
+          name: Cincinnati
+          probability: 0.33
+      - team:
+          name: Buffalo
+          probability: 0.67
+    - game:
+      - team:
+          name: Denver
+          probability: 0.28
+      - team:
+          name: Green Bay
+          probability: 0.72
+    - game:
+      - team:
+          name: Detroit
+          probability: 0.25
+      - team:
+          name: Philadelphia
+          probability: 0.75
+    - game:
+      - team:
+          name: Miami
+          probability: 0.16
+      - team:
+          name: Dallas
+          probability: 0.84
+    - game:
+      - team:
+          name: N.Y. Jets
+          probability: 0.15
+      - team:
+          name: New England
+          probability: 0.85
+    - game:
+      - team:
+          name: Oakland
+          probability: 0.26
+      - team:
+          name: Minnesota
+          probability: 0.74
+    - game:
+      - team:
+          name: Carolina
+          probability: 0.57
+      - team:
+          name: Arizona
+          probability: 0.43
+    - game:
+      - team:
+          name: N.Y. Giants
+          probability: 0.43
+      - team:
+          name: Tampa Bay
+          probability: 0.57
+    - game:
+      - team:
+          name: Houston
+          probability: 0.32
+      - team:
+          name: L.A. Chargers
+          probability: 0.68
+    - game:
+      - team:
+          name: New Orleans
+          probability: 0.51
+      - team:
+          name: Seattle
+          probability: 0.49
+    - game:
+      - team:
+          name: Pittsburgh
+          probability: 0.46
+      - team:
+          name: San Francisco
+          probability: 0.54
+    - game:
+      - team:
+          name: L.A. Rams
+          probability: 0.61
+      - team:
+          name: Cleveland
+          probability: 0.39
+    - game:
+      - team:
+          name: Chicago
+          probability: 0.56
+      - team:
+          name: Washington
+          probability: 0.44
+    number: 3
+- week:
+    games:
+    - game:
+      - team:
+          name: Philadelphia
+          probability: 0.5
+      - team:
+          name: Green Bay
+          probability: 0.5
+    - game:
+      - team:
+          name: Carolina
+          probability: 0.37
+      - team:
+          name: Houston
+          probability: 0.63
+    - game:
+      - team:
+          name: Cleveland
+          probability: 0.28
+      - team:
+          name: Baltimore
+          probability: 0.72
+    - game:
+      - team:
+          name: Kansas City
+          probability: 0.67
+      - team:
+          name: Detroit
+          probability: 0.33
+    - game:
+      - team:
+          name: L.A. Chargers
+          probability: 0.74
+      - team:
+          name: Miami
+          probability: 0.26
+    - game:
+      - team:
+          name: New England
+          probability: 0.68
+      - team:
+          name: Buffalo
+          probability: 0.32
+    - game:
+      - team:
+          name: Oakland
+          probability: 0.36
+      - team:
+          name: Indianapolis
+          probability: 0.64
+    - game:
+      - team:
+          name: Tennessee
+          probability: 0.48
+      - team:
+          name: Atlanta
+          probability: 0.52
+    - game:
+      - team:
+          name: Washington
+          probability: 0.44
+      - team:
+          name: N.Y. Giants
+          probability: 0.56
+    - game:
+      - team:
+          name: Seattle
+          probability: 0.64
+      - team:
+          name: Arizona
+          probability: 0.36
+    - game:
+      - team:
+          name: Tampa Bay
+          probability: 0.19
+      - team:
+          name: L.A. Rams
+          probability: 0.81
+    - game:
+      - team:
+          name: Jacksonville
+          probability: 0.28
+      - team:
+          name: Denver
+          probability: 0.72
+    - game:
+      - team:
+          name: Minnesota
+          probability: 0.47
+      - team:
+          name: Chicago
+          probability: 0.53
+    - game:
+      - team:
+          name: Dallas
+          probability: 0.37
+      - team:
+          name: New Orleans
+          probability: 0.63
+    - game:
+      - team:
+          name: Cincinnati
+          probability: 0.26
+      - team:
+          name: Pittsburgh
+          probability: 0.74
+    number: 4
+- week:
+    games:
+    - game:
+      - team:
+          name: L.A. Rams
+          probability: 0.49
+      - team:
+          name: Seattle
+          probability: 0.51
+    - game:
+      - team:
+          name: Arizona
+          probability: 0.37
+      - team:
+          name: Cincinnati
+          probability: 0.63
+    - game:
+      - team:
+          name: Atlanta
+          probability: 0.39
+      - team:
+          name: Houston
+          probability: 0.61
+    - game:
+      - team:
+          name: Baltimore
+          probability: 0.46
+      - team:
+          name: Pittsburgh
+          probability: 0.54
+    - game:
+      - team:
+          name: Buffalo
+          probability: 0.33
+      - team:
+          name: Tennessee
+          probability: 0.67
+    - game:
+      - team:
+          name: Chicago
+          probability: 0.62
+      - team:
+          name: Oakland
+          probability: 0.38
+    - game:
+      - team:
+          name: Jacksonville
+          probability: 0.23
+      - team:
+          name: Carolina
+          probability: 0.77
+    - game:
+      - team:
+          name: Minnesota
+          probability: 0.62
+      - team:
+          name: N.Y. Giants
+          probability: 0.38
+    - game:
+      - team:
+          name: New England
+          probability: 0.74
+      - team:
+          name: Washington
+          probability: 0.26
+    - game:
+      - team:
+          name: N.Y. Jets
+          probability: 0.25
+      - team:
+          name: Philadelphia
+          probability: 0.75
+    - game:
+      - team:
+          name: Tampa Bay
+          probability: 0.18
+      - team:
+          name: New Orleans
+          probability: 0.82
+    - game:
+      - team:
+          name: Denver
+          probability: 0.23
+      - team:
+          name: L.A. Chargers
+          probability: 0.77
+    - game:
+      - team:
+          name: Green Bay
+          probability: 0.37
+      - team:
+          name: Dallas
+          probability: 0.63
+    - game:
+      - team:
+          name: Indianapolis
+          probability: 0.21
+      - team:
+          name: Kansas City
+          probability: 0.79
+    - game:
+      - team:
+          name: Cleveland
+          probability: 0.32
+      - team:
+          name: San Francisco
+          probability: 0.68
+    number: 5
+- week:
+    games:
+    - game:
+      - team:
+          name: N.Y. Giants
+          probability: 0.15
+      - team:
+          name: New England
+          probability: 0.85
+    - game:
+      - team:
+          name: Carolina
+          probability: 0.63
+      - team:
+          name: Tampa Bay
+          probability: 0.37
+    - game:
+      - team:
+          name: Cincinnati
+          probability: 0.23
+      - team:
+          name: Baltimore
+          probability: 0.77
+    - game:
+      - team:
+          name: Houston
+          probability: 0.27
+      - team:
+          name: Kansas City
+          probability: 0.73
+    - game:
+      - team:
+          name: New Orleans
+          probability: 0.78
+      - team:
+          name: Jacksonville
+          probability: 0.22
+    - game:
+      - team:
+          name: Philadelphia
+          probability: 0.48
+      - team:
+          name: Minnesota
+          probability: 0.52
+    - game:
+      - team:
+          name: Seattle
+          probability: 0.53
+      - team:
+          name: Cleveland
+          probability: 0.47
+    - game:
+      - team:
+          name: Washington
+          probability: 0.49
+      - team:
+          name: Miami
+          probability: 0.51
+    - game:
+      - team:
+          name: Atlanta
+          probability: 0.59
+      - team:
+          name: Arizona
+          probability: 0.41
+    - game:
+      - team:
+          name: San Francisco
+          probability: 0.29
+      - team:
+          name: L.A. Rams
+          probability: 0.71
+    - game:
+      - team:
+          name: Dallas
+          probability: 0.6
+      - team:
+          name: N.Y. Jets
+          probability: 0.4
+    - game:
+      - team:
+          name: Tennessee
+          probability: 0.57
+      - team:
+          name: Denver
+          probability: 0.43
+    - game:
+      - team:
+          name: Pittsburgh
+          probability: 0.34
+      - team:
+          name: L.A. Chargers
+          probability: 0.66
+    - game:
+      - team:
+          name: Detroit
+          probability: 0.35
+      - team:
+          name: Green Bay
+          probability: 0.65
+    number: 6
+- week:
+    games:
+    - game:
+      - team:
+          name: Kansas City
+          probability: 0.7
+      - team:
+          name: Denver
+          probability: 0.3
+    - game:
+      - team:
+          name: Arizona
+          probability: 0.37
+      - team:
+          name: N.Y. Giants
+          probability: 0.63
+    - game:
+      - team:
+          name: Houston
+          probability: 0.45
+      - team:
+          name: Indianapolis
+          probability: 0.55
+    - game:
+      - team:
+          name: Jacksonville
+          probability: 0.31
+      - team:
+          name: Cincinnati
+          probability: 0.69
+    - game:
+      - team:
+          name: L.A. Rams
+          probability: 0.54
+      - team:
+          name: Atlanta
+          probability: 0.46
+    - game:
+      - team:
+          name: Miami
+          probability: 0.22
+      - team:
+          name: Buffalo
+          probability: 0.78
+    - game:
+      - team:
+          name: Minnesota
+          probability: 0.55
+      - team:
+          name: Detroit
+          probability: 0.45
+    - game:
+      - team:
+          name: Oakland
+          probability: 0.31
+      - team:
+          name: Green Bay
+          probability: 0.69
+    - game:
+      - team:
+          name: San Francisco
+          probability: 0.51
+      - team:
+          name: Washington
+          probability: 0.49
+    - game:
+      - team:
+          name: L.A. Chargers
+          probability: 0.48
+      - team:
+          name: Tennessee
+          probability: 0.52
+    - game:
+      - team:
+          name: Baltimore
+          probability: 0.45
+      - team:
+          name: Seattle
+          probability: 0.55
+    - game:
+      - team:
+          name: New Orleans
+          probability: 0.51
+      - team:
+          name: Chicago
+          probability: 0.49
+    - game:
+      - team:
+          name: Philadelphia
+          probability: 0.45
+      - team:
+          name: Dallas
+          probability: 0.55
+    - game:
+      - team:
+          name: New England
+          probability: 0.73
+      - team:
+          name: N.Y. Jets
+          probability: 0.27
+    number: 7
+- week:
+    games:
+    - game:
+      - team:
+          name: Washington
+          probability: 0.25
+      - team:
+          name: Minnesota
+          probability: 0.75
+    - game:
+      - team:
+          name: Arizona
+          probability: 0.16
+      - team:
+          name: New Orleans
+          probability: 0.84
+    - game:
+      - team:
+          name: Cincinnati
+          probability: 0.26
+      - team:
+          name: L.A. Rams
+          probability: 0.74
+    - game:
+      - team:
+          name: L.A. Chargers
+          probability: 0.51
+      - team:
+          name: Chicago
+          probability: 0.49
+    - game:
+      - team:
+          name: N.Y. Giants
+          probability: 0.35
+      - team:
+          name: Detroit
+          probability: 0.65
+    - game:
+      - team:
+          name: N.Y. Jets
+          probability: 0.56
+      - team:
+          name: Jacksonville
+          probability: 0.44
+    - game:
+      - team:
+          name: Oakland
+          probability: 0.3
+      - team:
+          name: Houston
+          probability: 0.7
+    - game:
+      - team:
+          name: Philadelphia
+          probability: 0.59
+      - team:
+          name: Buffalo
+          probability: 0.41
+    - game:
+      - team:
+          name: Seattle
+          probability: 0.46
+      - team:
+          name: Atlanta
+          probability: 0.54
+    - game:
+      - team:
+          name: Tampa Bay
+          probability: 0.27
+      - team:
+          name: Tennessee
+          probability: 0.73
+    - game:
+      - team:
+          name: Carolina
+          probability: 0.43
+      - team:
+          name: San Francisco
+          probability: 0.57
+    - game:
+      - team:
+          name: Cleveland
+          probability: 0.2
+      - team:
+          name: New England
+          probability: 0.8
+    - game:
+      - team:
+          name: Denver
+          probability: 0.37
+      - team:
+          name: Indianapolis
+          probability: 0.63
+    - game:
+      - team:
+          name: Green Bay
+          probability: 0.29
+      - team:
+          name: Kansas City
+          probability: 0.71
+    - game:
+      - team:
+          name: Miami
+          probability: 0.17
+      - team:
+          name: Pittsburgh
+          probability: 0.83
+    number: 8
+- week:
+    games:
+    - game:
+      - team:
+          name: San Francisco
+          probability: 0.59
+      - team:
+          name: Arizona
+          probability: 0.41
+    - game:
+      - team:
+          name: Houston
+          probability: 0.75
+      - team:
+          name: Jacksonville
+          probability: 0.25
+    - game:
+      - team:
+          name: Chicago
+          probability: 0.32
+      - team:
+          name: Philadelphia
+          probability: 0.68
+    - game:
+      - team:
+          name: Indianapolis
+          probability: 0.33
+      - team:
+          name: Pittsburgh
+          probability: 0.67
+    - game:
+      - team:
+          name: Minnesota
+          probability: 0.3
+      - team:
+          name: Kansas City
+          probability: 0.7
+    - game:
+      - team:
+          name: N.Y. Jets
+          probability: 0.55
+      - team:
+          name: Miami
+          probability: 0.45
+    - game:
+      - team:
+          name: Tennessee
+          probability: 0.49
+      - team:
+          name: Carolina
+          probability: 0.51
+    - game:
+      - team:
+          name: Washington
+          probability: 0.35
+      - team:
+          name: Buffalo
+          probability: 0.65
+    - game:
+      - team:
+          name: Detroit
+          probability: 0.45
+      - team:
+          name: Oakland
+          probability: 0.55
+    - game:
+      - team:
+          name: Tampa Bay
+          probability: 0.23
+      - team:
+          name: Seattle
+          probability: 0.77
+    - game:
+      - team:
+          name: Cleveland
+          probability: 0.45
+      - team:
+          name: Denver
+          probability: 0.55
+    - game:
+      - team:
+          name: Green Bay
+          probability: 0.34
+      - team:
+          name: L.A. Chargers
+          probability: 0.66
+    - game:
+      - team:
+          name: New England
+          probability: 0.52
+      - team:
+          name: Baltimore
+          probability: 0.48
+    - game:
+      - team:
+          name: Dallas
+          probability: 0.67
+      - team:
+          name: N.Y. Giants
+          probability: 0.33
+    number: 9
+- week:
+    games:
+    - game:
+      - team:
+          name: L.A. Chargers
+          probability: 0.63
+      - team:
+          name: Oakland
+          probability: 0.37
+    - game:
+      - team:
+          name: Arizona
+          probability: 0.39
+      - team:
+          name: Tampa Bay
+          probability: 0.61
+    - game:
+      - team:
+          name: Atlanta
+          probability: 0.28
+      - team:
+          name: New Orleans
+          probability: 0.72
+    - game:
+      - team:
+          name: Baltimore
+          probability: 0.6
+      - team:
+          name: Cincinnati
+          probability: 0.4
+    - game:
+      - team:
+          name: Buffalo
+          probability: 0.45
+      - team:
+          name: Cleveland
+          probability: 0.55
+    - game:
+      - team:
+          name: Carolina
+          probability: 0.35
+      - team:
+          name: Green Bay
+          probability: 0.65
+    - game:
+      - team:
+          name: Detroit
+          probability: 0.34
+      - team:
+          name: Chicago
+          probability: 0.66
+    - game:
+      - team:
+          name: Kansas City
+          probability: 0.56
+      - team:
+          name: Tennessee
+          probability: 0.44
+    - game:
+      - team:
+          name: N.Y. Giants
+          probability: 0.38
+      - team:
+          name: N.Y. Jets
+          probability: 0.62
+    - game:
+      - team:
+          name: Miami
+          probability: 0.26
+      - team:
+          name: Indianapolis
+          probability: 0.74
+    - game:
+      - team:
+          name: L.A. Rams
+          probability: 0.53
+      - team:
+          name: Pittsburgh
+          probability: 0.47
+    - game:
+      - team:
+          name: Minnesota
+          probability: 0.39
+      - team:
+          name: Dallas
+          probability: 0.61
+    - game:
+      - team:
+          name: Seattle
+          probability: 0.47
+      - team:
+          name: San Francisco
+          probability: 0.53
+    number: 10
+- week:
+    games:
+    - game:
+      - team:
+          name: Pittsburgh
+          probability: 0.53
+      - team:
+          name: Cleveland
+          probability: 0.47
+    - game:
+      - team:
+          name: Atlanta
+          probability: 0.44
+      - team:
+          name: Carolina
+          probability: 0.56
+    - game:
+      - team:
+          name: Buffalo
+          probability: 0.6
+      - team:
+          name: Miami
+          probability: 0.4
+    - game:
+      - team:
+          name: Dallas
+          probability: 0.57
+      - team:
+          name: Detroit
+          probability: 0.43
+    - game:
+      - team:
+          name: Denver
+          probability: 0.29
+      - team:
+          name: Minnesota
+          probability: 0.71
+    - game:
+      - team:
+          name: Houston
+          probability: 0.39
+      - team:
+          name: Baltimore
+          probability: 0.61
+    - game:
+      - team:
+          name: Jacksonville
+          probability: 0.33
+      - team:
+          name: Indianapolis
+          probability: 0.67
+    - game:
+      - team:
+          name: New Orleans
+          probability: 0.71
+      - team:
+          name: Tampa Bay
+          probability: 0.29
+    - game:
+      - team:
+          name: N.Y. Jets
+          probability: 0.4
+      - team:
+          name: Washington
+          probability: 0.6
+    - game:
+      - team:
+          name: Arizona
+          probability: 0.27
+      - team:
+          name: San Francisco
+          probability: 0.73
+    - game:
+      - team:
+          name: Cincinnati
+          probability: 0.38
+      - team:
+          name: Oakland
+          probability: 0.62
+    - game:
+      - team:
+          name: New England
+          probability: 0.51
+      - team:
+          name: Philadelphia
+          probability: 0.49
+    - game:
+      - team:
+          name: Chicago
+          probability: 0.33
+      - team:
+          name: L.A. Rams
+          probability: 0.67
+    - game:
+      - team:
+          name: Kansas City
+          probability: 0.57
+      - team:
+          name: L.A. Chargers
+          probability: 0.43
+    number: 11
+- week:
+    games:
+    - game:
+      - team:
+          name: Indianapolis
+          probability: 0.35
+      - team:
+          name: Houston
+          probability: 0.65
+    - game:
+      - team:
+          name: Carolina
+          probability: 0.27
+      - team:
+          name: New Orleans
+          probability: 0.73
+    - game:
+      - team:
+          name: Denver
+          probability: 0.35
+      - team:
+          name: Buffalo
+          probability: 0.65
+    - game:
+      - team:
+          name: Detroit
+          probability: 0.47
+      - team:
+          name: Washington
+          probability: 0.53
+    - game:
+      - team:
+          name: Miami
+          probability: 0.27
+      - team:
+          name: Cleveland
+          probability: 0.73
+    - game:
+      - team:
+          name: N.Y. Giants
+          probability: 0.3
+      - team:
+          name: Chicago
+          probability: 0.7
+    - game:
+      - team:
+          name: Oakland
+          probability: 0.41
+      - team:
+          name: N.Y. Jets
+          probability: 0.59
+    - game:
+      - team:
+          name: Pittsburgh
+          probability: 0.59
+      - team:
+          name: Cincinnati
+          probability: 0.41
+    - game:
+      - team:
+          name: Tampa Bay
+          probability: 0.28
+      - team:
+          name: Atlanta
+          probability: 0.72
+    - game:
+      - team:
+          name: Jacksonville
+          probability: 0.24
+      - team:
+          name: Tennessee
+          probability: 0.76
+    - game:
+      - team:
+          name: Dallas
+          probability: 0.29
+      - team:
+          name: New England
+          probability: 0.71
+    - game:
+      - team:
+          name: Green Bay
+          probability: 0.5
+      - team:
+          name: San Francisco
+          probability: 0.5
+    - game:
+      - team:
+          name: Seattle
+          probability: 0.37
+      - team:
+          name: Philadelphia
+          probability: 0.63
+    - game:
+      - team:
+          name: Baltimore
+          probability: 0.38
+      - team:
+          name: L.A. Rams
+          probability: 0.62
+    number: 12
+- week:
+    games:
+    - game:
+      - team:
+          name: Chicago
+          probability: 0.51
+      - team:
+          name: Detroit
+          probability: 0.49
+    - game:
+      - team:
+          name: Buffalo
+          probability: 0.29
+      - team:
+          name: Dallas
+          probability: 0.71
+    - game:
+      - team:
+          name: New Orleans
+          probability: 0.57
+      - team:
+          name: Atlanta
+          probability: 0.43
+    - game:
+      - team:
+          name: Green Bay
+          probability: 0.6
+      - team:
+          name: N.Y. Giants
+          probability: 0.4
+    - game:
+      - team:
+          name: N.Y. Jets
+          probability: 0.45
+      - team:
+          name: Cincinnati
+          probability: 0.55
+    - game:
+      - team:
+          name: Oakland
+          probability: 0.16
+      - team:
+          name: Kansas City
+          probability: 0.84
+    - game:
+      - team:
+          name: Philadelphia
+          probability: 0.75
+      - team:
+          name: Miami
+          probability: 0.25
+    - game:
+      - team:
+          name: San Francisco
+          probability: 0.32
+      - team:
+          name: Baltimore
+          probability: 0.68
+    - game:
+      - team:
+          name: Tampa Bay
+          probability: 0.33
+      - team:
+          name: Jacksonville
+          probability: 0.67
+    - game:
+      - team:
+          name: Tennessee
+          probability: 0.52
+      - team:
+          name: Indianapolis
+          probability: 0.48
+    - game:
+      - team:
+          name: Washington
+          probability: 0.33
+      - team:
+          name: Carolina
+          probability: 0.67
+    - game:
+      - team:
+          name: L.A. Rams
+          probability: 0.67
+      - team:
+          name: Arizona
+          probability: 0.33
+    - game:
+      - team:
+          name: Cleveland
+          probability: 0.32
+      - team:
+          name: Pittsburgh
+          probability: 0.68
+    - game:
+      - team:
+          name: L.A. Chargers
+          probability: 0.67
+      - team:
+          name: Denver
+          probability: 0.33
+    - game:
+      - team:
+          name: New England
+          probability: 0.61
+      - team:
+          name: Houston
+          probability: 0.39
+    - game:
+      - team:
+          name: Minnesota
+          probability: 0.47
+      - team:
+          name: Seattle
+          probability: 0.53
+    number: 13
+- week:
+    games:
+    - game:
+      - team:
+          name: Dallas
+          probability: 0.49
+      - team:
+          name: Chicago
+          probability: 0.51
+    - game:
+      - team:
+          name: Baltimore
+          probability: 0.55
+      - team:
+          name: Buffalo
+          probability: 0.45
+    - game:
+      - team:
+          name: Carolina
+          probability: 0.4
+      - team:
+          name: Atlanta
+          probability: 0.6
+    - game:
+      - team:
+          name: Cincinnati
+          probability: 0.36
+      - team:
+          name: Cleveland
+          probability: 0.64
+    - game:
+      - team:
+          name: Denver
+          probability: 0.3
+      - team:
+          name: Houston
+          probability: 0.7
+    - game:
+      - team:
+          name: Detroit
+          probability: 0.3
+      - team:
+          name: Minnesota
+          probability: 0.7
+    - game:
+      - team:
+          name: Indianapolis
+          probability: 0.52
+      - team:
+          name: Tampa Bay
+          probability: 0.48
+    - game:
+      - team:
+          name: Miami
+          probability: 0.3
+      - team:
+          name: N.Y. Jets
+          probability: 0.7
+    - game:
+      - team:
+          name: San Francisco
+          probability: 0.27
+      - team:
+          name: New Orleans
+          probability: 0.73
+    - game:
+      - team:
+          name: Washington
+          probability: 0.27
+      - team:
+          name: Green Bay
+          probability: 0.73
+    - game:
+      - team:
+          name: L.A. Chargers
+          probability: 0.59
+      - team:
+          name: Jacksonville
+          probability: 0.41
+    - game:
+      - team:
+          name: Kansas City
+          probability: 0.39
+      - team:
+          name: New England
+          probability: 0.61
+    - game:
+      - team:
+          name: Pittsburgh
+          probability: 0.63
+      - team:
+          name: Arizona
+          probability: 0.37
+    - game:
+      - team:
+          name: Tennessee
+          probability: 0.56
+      - team:
+          name: Oakland
+          probability: 0.44
+    - game:
+      - team:
+          name: Seattle
+          probability: 0.34
+      - team:
+          name: L.A. Rams
+          probability: 0.66
+    - game:
+      - team:
+          name: N.Y. Giants
+          probability: 0.2
+      - team:
+          name: Philadelphia
+          probability: 0.8
+    number: 14
+- week:
+    games:
+    - game:
+      - team:
+          name: N.Y. Jets
+          probability: 0.26
+      - team:
+          name: Baltimore
+          probability: 0.74
+    - game:
+      - team:
+          name: Buffalo
+          probability: 0.34
+      - team:
+          name: Pittsburgh
+          probability: 0.66
+    - game:
+      - team:
+          name: Chicago
+          probability: 0.4
+      - team:
+          name: Green Bay
+          probability: 0.6
+    - game:
+      - team:
+          name: Denver
+          probability: 0.18
+      - team:
+          name: Kansas City
+          probability: 0.82
+    - game:
+      - team:
+          name: Houston
+          probability: 0.39
+      - team:
+          name: Tennessee
+          probability: 0.61
+    - game:
+      - team:
+          name: Miami
+          probability: 0.33
+      - team:
+          name: N.Y. Giants
+          probability: 0.67
+    - game:
+      - team:
+          name: New England
+          probability: 0.75
+      - team:
+          name: Cincinnati
+          probability: 0.25
+    - game:
+      - team:
+          name: Philadelphia
+          probability: 0.66
+      - team:
+          name: Washington
+          probability: 0.34
+    - game:
+      - team:
+          name: Seattle
+          probability: 0.48
+      - team:
+          name: Carolina
+          probability: 0.52
+    - game:
+      - team:
+          name: Tampa Bay
+          probability: 0.33
+      - team:
+          name: Detroit
+          probability: 0.67
+    - game:
+      - team:
+          name: Cleveland
+          probability: 0.52
+      - team:
+          name: Arizona
+          probability: 0.48
+    - game:
+      - team:
+          name: Jacksonville
+          probability: 0.45
+      - team:
+          name: Oakland
+          probability: 0.55
+    - game:
+      - team:
+          name: Atlanta
+          probability: 0.41
+      - team:
+          name: San Francisco
+          probability: 0.59
+    - game:
+      - team:
+          name: L.A. Rams
+          probability: 0.45
+      - team:
+          name: Dallas
+          probability: 0.55
+    - game:
+      - team:
+          name: Minnesota
+          probability: 0.37
+      - team:
+          name: L.A. Chargers
+          probability: 0.63
+    - game:
+      - team:
+          name: Indianapolis
+          probability: 0.24
+      - team:
+          name: New Orleans
+          probability: 0.76
+    number: 15
+- week:
+    games:
+    - game:
+      - team:
+          name: Buffalo
+          probability: 0.2
+      - team:
+          name: New England
+          probability: 0.8
+    - game:
+      - team:
+          name: Detroit
+          probability: 0.45
+      - team:
+          name: Denver
+          probability: 0.55
+    - game:
+      - team:
+          name: Houston
+          probability: 0.59
+      - team:
+          name: Tampa Bay
+          probability: 0.41
+    - game:
+      - team:
+          name: L.A. Rams
+          probability: 0.54
+      - team:
+          name: San Francisco
+          probability: 0.46
+    - game:
+      - team:
+          name: Oakland
+          probability: 0.23
+      - team:
+          name: L.A. Chargers
+          probability: 0.77
+    - game:
+      - team:
+          name: Baltimore
+          probability: 0.57
+      - team:
+          name: Cleveland
+          probability: 0.43
+    - game:
+      - team:
+          name: Carolina
+          probability: 0.45
+      - team:
+          name: Indianapolis
+          probability: 0.55
+    - game:
+      - team:
+          name: Cincinnati
+          probability: 0.51
+      - team:
+          name: Miami
+          probability: 0.49
+    - game:
+      - team:
+          name: Jacksonville
+          probability: 0.37
+      - team:
+          name: Atlanta
+          probability: 0.63
+    - game:
+      - team:
+          name: New Orleans
+          probability: 0.51
+      - team:
+          name: Tennessee
+          probability: 0.49
+    - game:
+      - team:
+          name: N.Y. Giants
+          probability: 0.4
+      - team:
+          name: Washington
+          probability: 0.6
+    - game:
+      - team:
+          name: Pittsburgh
+          probability: 0.56
+      - team:
+          name: N.Y. Jets
+          probability: 0.44
+    - game:
+      - team:
+          name: Arizona
+          probability: 0.22
+      - team:
+          name: Seattle
+          probability: 0.78
+    - game:
+      - team:
+          name: Dallas
+          probability: 0.38
+      - team:
+          name: Philadelphia
+          probability: 0.62
+    - game:
+      - team:
+          name: Kansas City
+          probability: 0.59
+      - team:
+          name: Chicago
+          probability: 0.41
+    - game:
+      - team:
+          name: Green Bay
+          probability: 0.4
+      - team:
+          name: Minnesota
+          probability: 0.6
+    number: 16
+- week:
+    games:
+    - game:
+      - team:
+          name: Atlanta
+          probability: 0.57
+      - team:
+          name: Tampa Bay
+          probability: 0.43
+    - game:
+      - team:
+          name: Chicago
+          probability: 0.37
+      - team:
+          name: Minnesota
+          probability: 0.63
+    - game:
+      - team:
+          name: Cleveland
+          probability: 0.48
+      - team:
+          name: Cincinnati
+          probability: 0.52
+    - game:
+      - team:
+          name: Green Bay
+          probability: 0.53
+      - team:
+          name: Detroit
+          probability: 0.47
+    - game:
+      - team:
+          name: Indianapolis
+          probability: 0.42
+      - team:
+          name: Jacksonville
+          probability: 0.58
+    - game:
+      - team:
+          name: L.A. Chargers
+          probability: 0.34
+      - team:
+          name: Kansas City
+          probability: 0.66
+    - game:
+      - team:
+          name: Miami
+          probability: 0.1
+      - team:
+          name: New England
+          probability: 0.9
+    - game:
+      - team:
+          name: New Orleans
+          probability: 0.59
+      - team:
+          name: Carolina
+          probability: 0.41
+    - game:
+      - team:
+          name: N.Y. Jets
+          probability: 0.36
+      - team:
+          name: Buffalo
+          probability: 0.64
+    - game:
+      - team:
+          name: Philadelphia
+          probability: 0.68
+      - team:
+          name: N.Y. Giants
+          probability: 0.32
+    - game:
+      - team:
+          name: Pittsburgh
+          probability: 0.38
+      - team:
+          name: Baltimore
+          probability: 0.62
+    - game:
+      - team:
+          name: Tennessee
+          probability: 0.45
+      - team:
+          name: Houston
+          probability: 0.55
+    - game:
+      - team:
+          name: Washington
+          probability: 0.23
+      - team:
+          name: Dallas
+          probability: 0.77
+    - game:
+      - team:
+          name: Arizona
+          probability: 0.18
+      - team:
+          name: L.A. Rams
+          probability: 0.82
+    - game:
+      - team:
+          name: Oakland
+          probability: 0.42
+      - team:
+          name: Denver
+          probability: 0.58
+    - game:
+      - team:
+          name: San Francisco
+          probability: 0.36
+      - team:
+          name: Seattle
+          probability: 0.64
+    number: 17
