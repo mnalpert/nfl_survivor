@@ -121,8 +121,8 @@ class Season:
 
         Parameters
         ----------
-        picks : dict(int->str)
-            Week number to team name
+        picks : picks.Picks
+            Picks to compute probability for
 
         Returns
         -------
@@ -131,6 +131,36 @@ class Season:
         return functools.reduce(operator.mul,
                                 (self.nth_week(week_number).team_win_probability(team)
                                  for week_number, team in picks.items()))
+
+    def picks_expected_survival(self, picks):
+        """ Compute expected survival length of pick selection for season
+
+        If p_i is the probability that the pick for the ith week is winning then
+        the expected survival is
+
+        1 * p_1 * (1 - p_2) + 2 * p_1 * p_2 * (1 - p_3) + 3 * p_1 * p_2 * p_3 * (1 - p_4) + ...
+
+        which simplifies to
+
+        p_1 + p_1 * p_2 + p_1 * p_2 * p_3 + ...
+
+
+        Parameters
+        ----------
+        picks : picks.Picks
+            Picks to compute expected survival for
+
+        Returns
+        -------
+        float
+        """
+        cumulative_product, expected_survival = 1, 0
+        for week_number, team in sorted(picks.items(), key=lambda wt: wt[0]):
+            cumulative_product *= self.nth_week(week_number).team_win_probability(team)
+
+            expected_survival += cumulative_product
+
+        return expected_survival
 
     @classmethod
     def from_dict(cls, season_dict):

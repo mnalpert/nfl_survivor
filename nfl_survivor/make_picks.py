@@ -8,10 +8,20 @@ from nfl_survivor.lp_picker import LpPicker
 from nfl_survivor.picks import Picks
 from nfl_survivor.season import Season
 from nfl_survivor.utils import initialize_logging
+from tools.scrape_538 import Scraper
 
 logger = logging.getLogger(__name__)
 
 PICKERS = (GreedyPicker, LpPicker)
+
+
+def _parsed_season(season_path, year):
+    if season_path is not None:
+        return Season.from_yaml(season_path)
+    elif year is not None:
+        return Scraper.season_from_year(year)
+    else:
+        raise ValueError('Must specify either season path or year')
 
 
 @click.command()
@@ -21,12 +31,14 @@ PICKERS = (GreedyPicker, LpPicker)
               help='Name of picker to use when making picks (lp | greedy)')
 @click.option('-o', '--output', 'output', type=str, default=None,
               help='YAML file path to write picks to')
-@click.option('-s', '--season', 'season_path', type=str,
-              help='File path to season YAML')
+@click.option('-y', '--year', 'year', type=int, default=None,
+              help='Year to scrape season for')
+@click.option('-s', '--season', 'season_path', type=str, default=None,
+              help='File path to season YAML. Takes precedence over year')
 @initialize_logging()
-def make_picks(season_path, output, picker_name, previous_picks):
+def make_picks(season_path, year, output, picker_name, previous_picks):
     """Make picks for a given season and set of previous picks"""
-    season = Season.from_yaml(season_path)
+    season = _parsed_season(season_path, year)
     previous_picks = Picks.from_yaml(previous_picks) if previous_picks else None
     try:
         picker = {picker.__name__.lower(): picker

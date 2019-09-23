@@ -7,13 +7,13 @@ import requests
 from bs4 import BeautifulSoup
 
 from nfl_survivor import utils
+from nfl_survivor.season import Season
 
 logger = logging.getLogger(__name__)
 
-SEASON_URL = 'https://projects.fivethirtyeight.com/{year}-nfl-predictions/games/'
-
 
 class Scraper:
+    _SEASON_URL = 'https://projects.fivethirtyeight.com/{year}-nfl-predictions/games/'
 
     def __init__(self, url):
         """ Scraper for probabilities from 538
@@ -154,6 +154,11 @@ class Scraper:
             logger.exception(exception_msg)
             raise ValueError(exception_msg)
 
+    @classmethod
+    def season_from_year(cls, year):
+        scraper = cls(cls._SEASON_URL.format(year=year))
+        return Season.from_dict(scraper.scraped_season_dict())
+
     def write_season_yaml(self, file_path):
         """ Write season to YAML file
 
@@ -172,8 +177,8 @@ class Scraper:
               help='Year of season to scrape')
 @utils.initialize_logging()
 def scrape(year, output):
-    """Scrape NFL season for a given year with probabilitys from fivethirtyeight.com"""
-    scraper = Scraper(SEASON_URL.format(year=year))
+    """Scrape NFL season for a given year with probabilities from fivethirtyeight.com"""
+    scraper = Scraper(Scraper._SEASON_URL.format(year=year))
 
     if output:
         scraper.write_season_yaml(output)

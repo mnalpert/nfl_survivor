@@ -19,5 +19,7 @@ setup(
             'make_picks=nfl_survivor.make_picks:make_picks',
             'scrape_538=tools.scrape_538:scrape'
         ],
-    }
+    },
+    author='Matt Alpert',
+    author_email='mnalpert1@gmail.com'
 )
