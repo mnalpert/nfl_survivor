@@ -19,7 +19,7 @@ For the sake of our analysis we will assume that the probabilities that teams wi
 
 An intuitive approach is to make our picks greedily. That is, in week one we select the team with the highest win probability. This team is now labeled "picked" for the sake of selecting future teams. In each subsequent week we select the team with the highest win probability across all teams that we have not yet "picked" and add it to our set of "picked" teams. In this way, we pick a unique team per week for each week of the season.
 
-For example, we may have the season
+For example, we may have the season A
 
 | Week 1              | Probability | Week 2              | Probability |
 |---------------------|-------------|---------------------|-------------|
@@ -31,7 +31,14 @@ For example, we may have the season
 
 In the first week we pick the NY Giants since they have the highest win probability. In the second week, the NY Giants again have the highest win probability but we have unfortunately picked them already. In week 2, we settle for the highest win probability across all teams we haven't picked yet which is the NY Jets.
 
-The first thing to notice about this approach is that it actually may not successfully determine a team to pick for every week of the season. If our greediness forces us to pick a set of teams in the first `n` weeks and then in week `n + 1` the only teams playing are the ones we picked in weeks `1` through `n` then we will not be able to select a team in week `n + 1`. The schedule below shows such an example
+The first thing to notice about this approach is that it actually may not successfully determine a team to pick for every week of the season. If our greediness forces us to pick a set of teams in the first `n` weeks and then in week `n + 1` the only teams playing are the ones we picked in weeks `1` through `n` then we will not be able to select a team in week `n + 1`. Schedule B below shows such an example
+
+| Week 1    | Probability | Week 2         | Probability | Week 3         | Probability |
+|-----------|-------------|----------------|-------------|----------------|-------------|
+| NY Giants | 0.9         | NY Jets        | 0.2         | NY Giants      | 0.7         |
+| NY Jets   | 0.1         | Dallas Cowboys | 0.8         | Dallas Cowboys | 0.3         |
+
+In week 1 we pick the NY Giants and then in week 2 we pick the Dallas Cowboys. However, this leaves us without a team to pick in the third week's matchup between the NY Giants and the Dallas Cowboys. However, in practice this will likely not be an issue for the algorithm since NFL season schedules are not this pathological.  There are 32 NFL teams playing across 17 weeks with generally only two teams having a bye per week which always leaves enough teams to be picked even at the end of the season.
 
 Further, this algorithm does not necessarily determine a schedule that has the highest probability of making it through the every week of the season. For example ...
 
