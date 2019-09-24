@@ -11,10 +11,10 @@
     - game:
       - team:
           name: C
-          probability: 0.5
+          probability: 0.45
       - team:
           name: D
-          probability: 0.5
+          probability: 0.55
 - week:
     number: 2
     games:
@@ -28,7 +28,7 @@
     - game:
       - team:
           name: B
-          probability: 0.5
+          probability: 0.55
       - team:
           name: D
-          probability: 0.5
+          probability: 0.45
