@@ -3,32 +3,32 @@
     games:
     - game:
       - team:
-          name: A
+          name: NY Giants
           probability: 0.75
       - team:
-          name: B
+          name: NY Jets
           probability: 0.25
     - game:
       - team:
-          name: C
+          name: Dallas Cowboys
           probability: 0.45
       - team:
-          name: D
+          name: Philadelphia Eagles
           probability: 0.55
 - week:
     number: 2
     games:
     - game:
       - team:
-          name: A
+          name: NY Giants
           probability: 0.99
       - team:
-          name: C
+          name: Dallas Cowboys
           probability: 0.01
     - game:
       - team:
-          name: B
+          name: NY Jets
           probability: 0.55
       - team:
-          name: D
+          name: Philadelphia Eagles
           probability: 0.45
