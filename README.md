@@ -7,12 +7,64 @@ NFL Survivor Picker is a command line application to help you make picks in NFL 
 * Read in user specified NFL season and game probabilities
 * Make picks using greedy algorithm or globally optimal linear programming algorithm
 
-![](demos/make_picks.gif)
+![](readme_media/make_picks.gif)
 
 ## Installation
 
+To install simply clone the repo, navigate to the directory and `pip` install from the setup file.
+
+```
+git clone https://github.com/mnalpert/nfl_survivor.git
+cd nfl_survivor
+pip install -e .
+```
+
 ## Usage
 
+The two commands available are `make_picks` and `scrape_538`.
+
+### Make Picks
+
+`make_picks` will determine picks for an NFL season (either input as a year and then scraped or as a path to a custom NFL season) and then write them to an output file or print to standard out. The picks can either be made with a linear programming or greedy algorithm. Finally, if you have already made picks in the season or are otherwise locked in to picking certain teams in certain weeks this can be specified in a file and input to the algorithm.
+```
+Usage: make_picks [OPTIONS]
+
+Make picks for a given season and set of previous picks
+
+Options:
+-pp, --previous_picks TEXT  File path to YAML file with previous picks
+-p, --picker TEXT Name of picker to use when making picks (lp | greedy)
+-o, --output TEXT YAML file path to write picks to
+-y, --year INTEGER  Year to scrape season for
+-s, --season TEXT File path to season YAML. Takes precedence over year
+
+--help  Show this message and exit.
+```
+
+Some sample commands  and their behaviors are
+* `make_picks -y 2019 -o 2019_picks.yaml` will first scrape the 2019 season from fivethirtyeight.com and then make picks and write them to `2019_picks.yaml`
+* `make_picks -s seasons/greedy_counterexample.yaml -p greedy` will use the season specified in `seasons/greedy_counterexample.yaml` and use the greedy picker to determine picks. Since no output file is specified it will print the picks to standard out
+* `make_picks -y 2019 -pp previous_picks.yaml` will use the scraped 2019 season to make picks and respect the previous picks given in the file `previous_picks.yaml`
+
+### Scrape From 538
+
+`scrape_538` will scrape a given year's NFL season from fivethirtyeight.com and then write the season to an output file or print to standard out.
+
+```
+Usage: scrape_538 [OPTIONS]
+
+Scrape NFL season for a given year with probabilities from
+fivethirtyeight.com
+
+Options:
+-o, --output TEXT YAML file path to write season to
+-y, --year INTEGER  Year of season to scrape
+--help  Show this message and exit.
+```
+
+Some sample commands and their behaviors are
+* `scrape_538 -y 2019 -o seasons/2019_season.yaml` will scrape the 2019 season into the file `seasons/2019_season.yaml`
+* `scrape_538 -y 2018` will scrape and print the 2018 season to standard out
 
 ## Background
 
@@ -95,3 +147,24 @@ At first glance this doesn't seem to help us very much since this expression is 
 ![equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bt%3D1%7D%5ET%20%5Csum_%7Bw%3D1%7D%5EW%20s_%7Bw%2C%20t%7D%20%5Clog%20p_%7Bw%2C%20t%7D)
 
 and this expression can be used as the objective in our linear program.
+
+## Results
+
+We can compute the win probabilities and expected survival times for the 2019 season using picks determined by the linear programming and greedy algorithms.
+
+Using the scraped 2019 season from fivethirtyeight.com and running both the linear programming and greedy pickers we can find the win probabilities and expected survival for each set  of picks.
+
+| Picker\Metric | Win Probability | Expected Survival |
+|---------------|-----------------|-------------------|
+| Greedy Picker | 0.0127          | 4.123             |
+| LP Picker     | 0.0206          | 3.418             |
+
+The LP picker does indeed give us a higher probability of winning every week of the season but interestingly lowers our expected survival time.
+
+The follow REPL shows the methods used to compute the picks and associated metrics
+
+![](readme_media/results.png)
+
+## Contributors
+
+* Matt Alpert -- mnalpert1@gmail.com
