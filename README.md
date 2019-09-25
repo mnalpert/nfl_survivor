@@ -7,7 +7,7 @@ NFL Survivor Picker is a command line application to help you make picks in NFL 
 * Read in user specified NFL season and game probabilities
 * Make picks using greedy algorithm or globally optimal linear programming algorithm
 
-![](readme_media/make_picks.gif)
+![](images/make_picks.gif)
 
 ## Installation
 
@@ -163,7 +163,7 @@ The LP picker does indeed give us a higher probability of winning every week of 
 
 The follow REPL shows the methods used to compute the picks and associated metrics
 
-![](readme_media/results.png)
+![](images/results.png)
 
 ## Contributors
 
