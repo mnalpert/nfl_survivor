@@ -7,6 +7,13 @@ NFL Survivor Picker is a command line application to help you make picks in NFL 
 * Read in user specified NFL season and game probabilities
 * Make picks using greedy algorithm or globally optimal linear programming algorithm
 
+![](demos/make_picks.gif)
+
+## Installation
+
+## Usage
+
+
 ## Background
 
 NFL Survivor is a fantasy sports game where participants pick one NFL team per week to win their matchup. If the picked team wins then the participant stays in the pool but if they lose then they are out of the game. The tricky bit is that a participant cannot pick the same team more than once. The last participant standing is crowned the winner of the pool (subject to tiebreakers if multiple participants have no losses at the end of the 17 week season).
@@ -68,7 +75,7 @@ The constraint to not pick the same team twice can be written in terms of our in
 
 ![equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bw%3D1%7D%5EW%20s_%7Bw%2C%20t%7D%20%5Cleq%201%20%5Chspace%7B20%7D%20%5Cforall%20t%20%5Cin%20%5C%7B1%2C%202%2C%20%5Cldots%2C%20T%5C%7D)
 
-Since the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) are either zero or one this constraint says that at most one of the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) can be one for each team or in other words the same team cannot be picked twice.
+Since the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) are either zero or one this constraint says that at most one of the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) can be one for each team or in other words the same team cannot be picked more than once
 #### Maximize Win Probability
 
 The simplest expression equal to the probability of winning every week in the season is
