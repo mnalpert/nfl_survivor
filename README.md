@@ -127,7 +127,7 @@ Since the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C
 
 The constraint to not pick the same team twice can be written in terms of our indicator variables as
 
-![equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bw%3D1%7D%5EW%20s_%7Bw%2C%20t%7D%20%5Cleq%201%20%5Chspace%7B20%7D%20%5Cforall%20t%20%5Cin%20%5C%7B1%2C%202%2C%20%5Cldots%2C%20T%5C%7D)
+![equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bw%3D1%7D%5EW%20s_%7Bw%2C%20t%7D%20%5Cleq%201%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5Cforall%20t)
 
 Since the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) are either zero or one this constraint says that at most one of the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) can be one for each team or in other words the same team cannot be picked more than once
 #### Maximize Win Probability
