@@ -119,7 +119,7 @@ To formulate the problem as a linear program we must specify linear equations or
 
 The constraint to pick exactly one team per week can be written in terms of our indicator variables as
 
-![equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bt%3D1%7D%5ET%20s_%7Bw%2C%20t%7D%20%3D%201%20%5Chspace%7B20%7D%20%5Cforall%20w%20%5Cin%20%5C%7B1%2C%202%2C%20%5Cldots%2C%20W%5C%7D)
+![equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bt%3D1%7D%5ET%20s_%7Bw%2C%20t%7D%20%3D%201%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5Cforall%20w)
 
 Since the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) are either zero or one this constraint says that exactly one of the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) is one per week or in other words that we pick exactly one team per week.
 
