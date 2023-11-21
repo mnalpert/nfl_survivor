@@ -142,7 +142,7 @@ Unfortunately, this expression is not linear and therefore cannot be used as an 
 
 $$ P = \left( \prod_{t=1}^T p_{1, t}^{s_{1, t}} \right)  \left( \prod_{t=1}^T p_{2, t}^{s_{2, t}} \right) \cdots \left( \prod_{t=1}^T p_{W, t}^{s_{W, t}} \right) = \prod_{t=1}^T \prod_{w=1}^W p_{w, t}^{s_{w, t}}$$
 
-The expression in the $i$th set of parentheses is the probability that we win in the $i$th week and multiplying across all the weeks gives the probability that we win every week of the season.
+The expression in the $i$ th set of parentheses is the probability that we win in the $i$ th week and multiplying across all the weeks gives the probability that we win every week of the season.
 
 At first glance this doesn't seem to help us very much since this expression is also nonlinear in the $s_{w, t}$. However, we can just as well maximize the logarithm of this expression since logarithm is a strictly increasing function. The arguments which maximize a function will also maximize a strictly increasing function applied to the function. Thankfully for us the logarithm of the above expression will be linear
 
