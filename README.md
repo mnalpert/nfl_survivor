@@ -90,11 +90,11 @@ For example, we may have the season
 
 In the first week we pick the NY Giants since they have the highest win probability in that week. In the second week, the NY Giants again have the highest win probability but we have unfortunately picked them already. In week 2, we settle for the highest win probability across all teams we haven't picked yet which is the NY Jets.
 
-This example illustrates that the greedy algorithm may not produce a set of picks that has the optimal probability of making it through the entire season. With the picks determined by the greedy algorithm we have a probability of  ![equation](https://latex.codecogs.com/gif.latex?0.75%20*%200.55%20%5Capprox%200.41) of making it through the season. However, the optimal set of picks are taking the Philadelphia Eagles in week 1 followed by the NY Giants in week 2 which has a probability of ![equation](https://latex.codecogs.com/gif.latex?0.55%20*%200.99%20%5Capprox%200.54) of making it through the season. Our greediness forced us to into picking the NY Giants in week 1 and then forbid us from selecting them again in their blowout matchup in week 2. We were better off picking a lower probability team in week 1 to save the NY Giants for our week 2.
+This example illustrates that the greedy algorithm may not produce a set of picks that has the optimal probability of making it through the entire season. With the picks determined by the greedy algorithm we have a probability of $0.75 \cdot 0.55 \approx 0.41$ of making it through the season. However, the optimal set of picks are taking the Philadelphia Eagles in week 1 followed by the NY Giants in week 2 which has a probability of $0.55 \cdot 0.99 \approx 0.54$ of making it through the season. Our greediness forced us to into picking the NY Giants in week 1 and then forbid us from selecting them again in their blowout matchup in week 2. We were better off picking a lower probability team in week 1 to save the NY Giants for our week 2.
 
 You can run `make_picks -s seasons/greedy_counterexample.yaml -p greedy` and `make_picks -s seasons/greedy_counterexample.yaml -p lp` to see this in action for the greedy picker and linear programming picker respectively.
 
-Further, the greedy approach may not even successfully determine a team to pick for every week of the season. If our greediness forces us to pick a set of teams in the first ![equation](https://latex.codecogs.com/gif.latex?n) weeks and then in week ![equation](https://latex.codecogs.com/gif.latex?n&plus;1) the only teams playing are the ones we picked in weeks ![equation](https://latex.codecogs.com/gif.latex?1)  through ![equation](https://latex.codecogs.com/gif.latex?n) then we will not be able to select a team in week ![equation](https://latex.codecogs.com/gif.latex?n&plus;1). The schedule below shows such an example
+Further, the greedy approach may not even successfully determine a team to pick for every week of the season. If our greediness forces us to pick a set of teams in the first $n$ weeks and then in week $n + 1$ the only teams playing are the ones we picked in weeks $1$ through $n$ then we will not be able to select a team in week $n + 1$. The schedule below shows such an example
 
 | Week 1  | Probability | Week 2 | Probability | Week 3 | Probability |
 |-----------|-------------|----------------|-------------|----------------|-------------|
@@ -106,12 +106,12 @@ In week 1 we pick the NY Giants and then in week 2 we pick the Dallas Cowboys. H
 ### Linear Programming Formulation
 
 The problem of picking a team for every week of the season can be solved in a globally optimal way by formulating it as a linear program. Let us define a few variables
-* ![equation](https://latex.codecogs.com/gif.latex?W) is the number of weeks in the season. Weeks will be indexed by the numbers ![equation](https://latex.codecogs.com/gif.latex?1) through ![equation](https://latex.codecogs.com/gif.latex?W)
-* ![equation](https://latex.codecogs.com/gif.latex?T) is the number of teams in the league. Teams will be indexed by the numbers ![equation](https://latex.codecogs.com/gif.latex?1) through ![equation](https://latex.codecogs.com/gif.latex?T)
-* ![equation](https://latex.codecogs.com/gif.latex?p_%7Bw%2C%20t%7D) is the probability that in week ![equation](https://latex.codecogs.com/gif.latex?w) team ![equation](https://latex.codecogs.com/gif.latex?t) wins where ![equation](https://latex.codecogs.com/gif.latex?w%20%5Cin%20%5C%7B1%2C%202%2C%20%5Cldots%2C%20W%5C%7D) and ![equation](https://latex.codecogs.com/gif.latex?t%20%5Cin%20%5C%7B1%2C%202%2C%20%5Cldots%2C%20T%5C%7D)
-* ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) is an indicator variable which is ![equation](https://latex.codecogs.com/gif.latex?1) if we pick team ![equation](https://latex.codecogs.com/gif.latex?t)  in week ![equation](https://latex.codecogs.com/gif.latex?w) and ![equation](https://latex.codecogs.com/gif.latex?0) if not
+* $W$ is the number of weeks in the season. Weeks will be indexed by the numbers 1 through $W$
+* $T$ is the number of teams in the league. Teams will be indexed by the numbers $1$ through $T$
+* $p_{w, t}$ is the probability that in week $w$ team $t$ wins where $w \in \{ 1, 2, \ldots, W \}$ and $t \in \{ 1, 2, \ldots, T \}$
+* $s_{w, t}$ is an indicator variable which is $1$ if we pick team $t$  in week $w$ and $0$ if not
 
-The ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) are the variables we would like to figure out and will indicate which team we pick for each week.
+The $s_{w, t}$ are the variables we would like to figure out and will indicate which team we pick for each week.
 
 To formulate the problem as a linear program we must specify linear equations or inequalities capturing the constraints and a linear expression that represents the objective. The two constraints we need to impose are picking exactly one team per week and not picking the same team twice. The objective to be maximized is the probability of winning every week in the season.
 
@@ -119,34 +119,34 @@ To formulate the problem as a linear program we must specify linear equations or
 
 The constraint to pick exactly one team per week can be written in terms of our indicator variables as
 
-![equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bt%3D1%7D%5ET%20s_%7Bw%2C%20t%7D%20%3D%201%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5Cforall%20w)
+$$ \sum_{t=1}^T s_{w, t} = 1 \quad \forall w $$
 
-Since the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) are either zero or one this constraint says that exactly one of the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) is one per week or in other words that we pick exactly one team per week.
+Since the $s_{w, t}$ are either zero or one this constraint says that exactly one of them is $1$ per week or in other words that we pick exactly one team per week.
 
 #### Don't Pick Same Team Twice
 
 The constraint to not pick the same team twice can be written in terms of our indicator variables as
 
-![equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bw%3D1%7D%5EW%20s_%7Bw%2C%20t%7D%20%5Cleq%201%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5C%3A%20%5Cforall%20t)
+$$ \sum_{w=1}^W s_{w, t} \leq 1 \quad \forall t$$
 
-Since the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) are either zero or one this constraint says that at most one of the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D) can be one for each team or in other words the same team cannot be picked more than once
+Since the $s_{w, t}$ are either zero or one this constraint says that at most one of them can be $1$ for each team or in other words the same team cannot be picked more than once
 #### Maximize Win Probability
 
 The simplest expression equal to the probability of winning every week in the season is
 
-![equation](https://latex.codecogs.com/gif.latex?%5Cleft%28%5Csum_%7Bt%3D1%7D%5ET%20s_%7B1%2C%20t%7D%20p_%7B1%2C%20t%7D%5Cright%29%5Cleft%28%5Csum_%7Bt%3D1%7D%5ET%20s_%7B2%2C%20t%7D%20p_%7B2%2C%20t%7D%5Cright%29%20%5Ccdots%20%5Cleft%28%5Csum_%7Bt%3D1%7D%5ET%20s_%7BW%2C%20t%7D%20p_%7B1%2C%20W%7D%5Cright%29)
+$$ P = \left( \sum_{t=1}^T s_{1, t} \cdot p_{1,t}\right) \left( \sum_{t=1}^T s_{2, t} \cdot p_{2,t}\right) \cdots \left( \sum_{t=1}^T s_{W, t} \cdot p_{W,t}\right) $$
 
-The expression in the first set of parentheses is the probability that we win with our picks in week 1 since the only nonzero ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7B1%2C%20t%7D) is for the team that we have picked in week 1. Similarly, the expression in the ![equation](https://latex.codecogs.com/gif.latex?i)th set of parentheses is the probability that we win in the ![equation](https://latex.codecogs.com/gif.latex?i)th week. Multiplying across all the weeks of the season gives the probability that we win every week of the season.
+The expression in the first set of parentheses is the probability that we win with our picks in week 1 since the only nonzero $s_{1, t}$ is for the team that we have picked in week 1. Similarly, the expression in the $i$th set of parentheses is the probability that we win in the $i$th week. Multiplying across all the weeks of the season gives the probability that we win every week of the season.
 
 Unfortunately, this expression is not linear and therefore cannot be used as an objective expression in a linear program. Luckily, we can write the probability of winning every week in the season in a different way that allows for a transformation into a linear expression. The following expression is also equal to the probability of winning every week of the season
 
-![equation](https://latex.codecogs.com/gif.latex?%5Cleft%28%5Cprod_%7Bt%3D1%7D%5ET%20p_%7B1%2C%20t%7D%5E%7Bs_%7B1%2C%20t%7D%7D%20%5Cright%20%29%5Cleft%28%5Cprod_%7Bt%3D1%7D%5ET%20p_%7B2%2C%20t%7D%5E%7Bs_%7B2%2C%20t%7D%7D%20%5Cright%20%29%20%5Ccdots%20%5Cleft%28%5Cprod_%7Bt%3D1%7D%5ET%20p_%7BW%2C%20t%7D%5E%7Bs_%7BW%2C%20t%7D%7D%20%5Cright%20%29%20%3D%20%5Cprod_%7Bt%3D1%7D%5ET%20%5Cprod_%7Bw%3D1%7D%5EW%20p_%7Bw%2C%20t%7D%5E%7Bs_%7Bw%2C%20t%7D%7D)
+$$ P = \left( \prod_{t=1}^T p_{1, t}^{s_{1, t}} \right)  \left( \prod_{t=1}^T p_{2, t}^{s_{2, t}} \right) \cdots \left( \prod_{t=1}^T p_{W, t}^{s_{W, t}} \right) = \prod_{t=1}^T \prod_{w=1}^W p_{w, t}^{s_{w, t}}$$
 
-The expression in the ![equation](https://latex.codecogs.com/gif.latex?i)th set of parentheses is the probability that we win in the ![equation](https://latex.codecogs.com/gif.latex?i)th week and multiplying across all the weeks gives the probability that we win every week of the season.
+The expression in the $i$th set of parentheses is the probability that we win in the $i$th week and multiplying across all the weeks gives the probability that we win every week of the season.
 
-At first glance this doesn't seem to help us very much since this expression is also nonlinear in the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20s_%7Bw%2C%20t%7D). However, we can just as well maximize the logarithm of this expression since logarithm is a strictly increasing function. The arguments which maximize a function ![equation](https://latex.codecogs.com/gif.latex?f) will also maximize a strictly increasing function applied to ![equation](https://latex.codecogs.com/gif.latex?f). Thankfully for us the logarithm of the above expression will be linear
+At first glance this doesn't seem to help us very much since this expression is also nonlinear in the $s_{w, t}$. However, we can just as well maximize the logarithm of this expression since logarithm is a strictly increasing function. The arguments which maximize a function will also maximize a strictly increasing function applied to the function. Thankfully for us the logarithm of the above expression will be linear
 
-![equation](https://latex.codecogs.com/gif.latex?%5Csum_%7Bt%3D1%7D%5ET%20%5Csum_%7Bw%3D1%7D%5EW%20s_%7Bw%2C%20t%7D%20%5Clog%20p_%7Bw%2C%20t%7D)
+$$ \log P = \sum_{t=1}^T \sum_{w=1}^W s_{w, t} \cdot \log p_{w, t} $$
 
 and this expression can be used as the objective in our linear program.
 
