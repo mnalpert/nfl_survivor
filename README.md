@@ -136,7 +136,7 @@ The simplest expression equal to the probability of winning every week in the se
 
 $$ P = \left( \sum_{t=1}^T s_{1, t} \cdot p_{1,t}\right) \left( \sum_{t=1}^T s_{2, t} \cdot p_{2,t}\right) \cdots \left( \sum_{t=1}^T s_{W, t} \cdot p_{W,t}\right) $$
 
-The expression in the first set of parentheses is the probability that we win with our picks in week 1 since the only nonzero $s_{1, t}$ is for the team that we have picked in week 1. Similarly, the expression in the $i$th set of parentheses is the probability that we win in the $i$th week. Multiplying across all the weeks of the season gives the probability that we win every week of the season.
+The expression in the first set of parentheses is the probability that we win with our picks in week 1 since the only nonzero $s_{1, t}$ is for the team that we have picked in week 1. Similarly, the expression in the $i$ th set of parentheses is the probability that we win in the $i$ th week. Multiplying across all the weeks of the season gives the probability that we win every week of the season.
 
 Unfortunately, this expression is not linear and therefore cannot be used as an objective expression in a linear program. Luckily, we can write the probability of winning every week in the season in a different way that allows for a transformation into a linear expression. The following expression is also equal to the probability of winning every week of the season
 
